@@ -1,11 +1,10 @@
 import React from "react";
 import "./index.css";
 import LoadingBox from "components/LoadingBox";
-import { getImageUrl } from "utils/fetch";
 import useImageLoaded from "hooks/useImageLoaded";
 
 type PostGridItemProps = {
-    post: Post;
+    post: any;
 };
 
 const PostGridItem: React.FC<PostGridItemProps> = ({ post }) => {
@@ -16,7 +15,7 @@ const PostGridItem: React.FC<PostGridItemProps> = ({ post }) => {
             <div className="post-thumbnail-wrapper">
                 {!loaded && <LoadingBox className="post-thumbnail-loader" />}
                 <img
-                    src={getImageUrl(post.imageName)}
+                    src={post.imageName}
                     alt={post.altText}
                     ref={ref}
                     onLoad={onLoad}
