@@ -1,0 +1,17 @@
+- Web content
+	- Home
+		- index.md - Home page text
+			- About me section
+			- Link to default gallery
+	- Creatures
+		- index - grid of all creatures that are not hidden
+		- (creature id)
+			- for mine, a ref of creature, button that takes them elsewhere
+			- for friends, just write whatever makes sense
+	- Gallery
+		- index - show a gallery of all posts
+			- route query params into the gallery as props
+		- Post
+			- (post id) - the specific post
+				- can link to creatures who are friends
+				- has tags that can be filtered on

@@ -6,19 +6,22 @@ import NotFound from "pages/NotFound";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Characters from "pages/Characters";
-import CharacterPage from "pages/CharacterPage";
+import MarkdownPage from "pages/MarkdownPage";
 
 const App: React.FC = () => {
     return (
         <BrowserRouter>
             <div className="site">
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="/"
+                        element={<MarkdownPage path="home/index" />}
+                    />
                     <Route path="/about" element={<About />} />
                     <Route path="/characters" element={<Characters />} />
                     <Route
-                        path="/characters/:character"
-                        element={<CharacterPage />}
+                        path="/test"
+                        element={<MarkdownPage path="test/index" />}
                     />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
