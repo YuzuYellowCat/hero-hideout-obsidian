@@ -13,10 +13,11 @@
         "@types/react": "^19.1.0",
         "@types/react-dom": "^19.1.1",
         "classnames": "^2.5.1",
+        "list-react-files": "^0.2.0",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-markdown": "^10.1.0",
-        "react-router-dom": "^7.5.0",
+        "react-router": "^7.9.5",
         "react-scripts": "5.0.1",
         "typescript": "^4.9.5",
         "web-vitals": "^4.0.0"
@@ -26,6 +27,11 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
+    },
+    "browser": {
+        "fs": false,
+        "path": false,
+        "os": false
     },
     "eslintConfig": {
         "extends": [
