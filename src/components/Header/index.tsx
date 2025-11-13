@@ -2,27 +2,38 @@ import React from "react";
 import "./index.css";
 import Section from "components/Section";
 import TitleStripe from "components/TitleStripe";
-import { useNavigate } from "react-router";
-import { HeaderLinks } from "appConstants";
+import { useLocation, useNavigate } from "react-router";
 
 type HeaderProps = {
     borderColor: string;
-    selected: string;
 };
 
-const Header: React.FC<HeaderProps> = ({ borderColor, selected }) => {
+const Header: React.FC<HeaderProps> = ({ borderColor }) => {
     const navigate = useNavigate();
+    const loc = useLocation();
 
-    const links = Object.entries(HeaderLinks).map(([key, value]) => {
-        const isSelected = key === selected;
+    const pages = require.context("website-content/pages");
+    const test = pages
+        .keys()
+        .map((key) => {
+            return key.match(/^\.\/(.*)\/index.md$/)?.[1];
+        })
+        .filter((x) => x && !x.startsWith("_")) as string[];
+
+    test.unshift("home");
+
+    const links = test.map((key) => {
+        const navPath = key === "home" ? "/" : "/" + key;
+        const isSelected = loc.pathname === navPath;
+        const displayKey = key.charAt(0).toUpperCase() + key.slice(1);
         return (
             <button
                 style={isSelected ? {} : { color: borderColor }}
                 className={`link${isSelected ? " selected" : ""}`}
                 key={key}
-                onClick={() => navigate(value)}
+                onClick={() => navigate("." + navPath)}
             >
-                <span className="link-text">{key}</span>
+                <span className="link-text">{displayKey}</span>
                 <div
                     className="link-background"
                     style={isSelected ? { backgroundColor: borderColor } : {}}

@@ -18,7 +18,7 @@ const PageWrapper: React.FC<PropsWithChildren<PageWrapperProps>> = ({
 }) => {
     return (
         <div className="page">
-            <Header selected={title ?? ""} borderColor={color} />
+            <Header borderColor={color} />
             <Section color={color} title={title}>
                 <div
                     className="page-contents"
