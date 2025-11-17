@@ -1,7 +1,8 @@
-import React, { HTMLAttributes, Suspense } from "react";
+import CharacterGrid from "components/CharacterGrid";
+import React, { HTMLAttributes } from "react";
 
 const COMPONENT_MAP = {
-    CharacterGrid: React.lazy(() => import("components/CharacterGrid")),
+    CharacterGrid: CharacterGrid,
 };
 
 const ComponentInsert: React.FC<
@@ -18,11 +19,7 @@ const ComponentInsert: React.FC<
         return <div {...props} />;
     }
 
-    return (
-        <Suspense fallback={<></>}>
-            <ComponentOverride />
-        </Suspense>
-    );
+    return <ComponentOverride />;
 };
 
 export default ComponentInsert;

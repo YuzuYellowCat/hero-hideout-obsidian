@@ -1,16 +1,43 @@
-import React, { AnchorHTMLAttributes } from "react";
+import React, {
+    AnchorHTMLAttributes,
+    useEffect,
+    useMemo,
+    useState,
+} from "react";
+import { useNavigate } from "react-router";
 
 const MarkdownAnchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (
     props
 ) => {
-    console.log(props);
-    let link = props.href || "";
-    if (link.startsWith("pages")) {
-        link = link?.replace("pages", "");
-        link = link?.replace("/index", "");
-    }
+    const navigate = useNavigate();
+    const [link, setLink] = useState<string>("");
+    const [isLocal, setIsLocal] = useState<boolean>(false);
+
+    useEffect(() => {
+        let _link = props.href || "";
+        setIsLocal(_link?.startsWith("pages") ?? false);
+        if (_link.startsWith("pages")) {
+            _link = _link?.replace("pages", "");
+            _link = _link?.replace("/index", "");
+            if (_link === "") {
+                _link = "/";
+            }
+        }
+        setLink(_link);
+    }, [props.href]);
+
+    const anchorNavProps = useMemo(() => {
+        if (isLocal) {
+            return {
+                onClick: () => navigate(link),
+                href: "",
+            };
+        }
+        return { href: link };
+    }, [isLocal, link, navigate]);
+
     return (
-        <a {...props} href={link}>
+        <a {...props} {...anchorNavProps}>
             {props.children}
         </a>
     );

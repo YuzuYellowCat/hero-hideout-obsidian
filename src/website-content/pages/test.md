@@ -23,7 +23,7 @@ color: "#abcdef"
 
 Yo a cool image
 
-[[pages/home/index|index]]
+[[pages/creatures/index|index]]
 
 ---
 
