@@ -6,31 +6,13 @@ import MarkdownImage from "components/MarkdownImage";
 import MarkdownAnchor from "components/MarkdownAnchor";
 import { useLocation } from "react-router";
 import NotFound from "pages/NotFound";
-
-type MarkdownPageData = {
-    content: string;
-    color: string;
-    title: string;
-};
-
-const _rawMarkdownTransform = (raw: string) => {
-    let content = raw.replace(/---\n[\S\s]+?---/, "");
-    const propertiesString = raw.replace(content, "");
-    content = content.replaceAll(/\[\[(.*)\|(.*)]\]/g, "[$2]($1)");
-    let properties: Partial<MarkdownPageData> = {};
-    propertiesString.split("\n").forEach((property) => {
-        if (property === "---") {
-            return undefined;
-        }
-        const [name, value] = property.split(": ");
-        properties[name as keyof MarkdownPageData] = value?.replaceAll('"', "");
-    });
-    return {
-        content,
-        color: properties.color ?? "#ffffff",
-        title: properties.title ?? "[TITLE NOT FOUND]",
-    };
-};
+import {
+    rawMarkdownTransform,
+    type MarkdownPageData,
+} from "utils/rawMarkdownTransform";
+import ComponentInsert from "components/ComponentInsert";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 const MarkdownPage: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -60,7 +42,7 @@ const MarkdownPage: React.FC = () => {
             }
 
             if (textContent) {
-                setPage(_rawMarkdownTransform(textContent));
+                setPage(rawMarkdownTransform(textContent));
             }
             setLoading(false);
         })();
@@ -81,7 +63,11 @@ const MarkdownPage: React.FC = () => {
                     components={{
                         img: MarkdownImage,
                         a: MarkdownAnchor,
+                        div: ComponentInsert,
                     }}
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                    skipHtml={false}
                 >
                     {page?.content}
                 </ReactMarkdown>

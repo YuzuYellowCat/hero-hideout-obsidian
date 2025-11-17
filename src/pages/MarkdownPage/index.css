@@ -22,6 +22,8 @@ h6 {
 
 .markdown-page p {
     margin: 16px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: normal;
 }
 
 .markdown-page img {

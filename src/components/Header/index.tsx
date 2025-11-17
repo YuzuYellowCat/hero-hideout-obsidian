@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ borderColor }) => {
     const test = pages
         .keys()
         .map((key) => {
-            return key.match(/^\.\/(.*)\/index.md$/)?.[1];
+            return key.match(/^\.\/([a-z]*)\/index.md$/)?.[1];
         })
         .filter((x) => x && !x.startsWith("_")) as string[];
 

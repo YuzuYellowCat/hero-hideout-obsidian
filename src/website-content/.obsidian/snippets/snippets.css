@@ -1,0 +1,14 @@
+div[data-component-id] {
+    display: flex;
+    color: var(--text-normal);
+    background-color: var(--background-primary-alt);
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+}
+
+div[data-component-id]::before {
+    font-size: 16px;
+    content: "Component: <" attr(data-component-id) " />";
+    text-align: center;
+}
