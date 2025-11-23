@@ -1,8 +1,6 @@
 .page-grid {
-    --grid-size: calc(33.333% - 6px);
     display: grid;
     padding: 8px;
-    grid-template-columns: var(--grid-size) var(--grid-size) var(--grid-size);
-    gap: 9px;
-    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
 }
