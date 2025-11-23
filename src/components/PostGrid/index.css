@@ -1,6 +1,0 @@
-.post-grid {
-    display: grid;
-    gap: 8px;
-    padding: 8px;
-    grid-template-columns: 25% 25% 25% 25%;
-}

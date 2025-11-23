@@ -1,8 +1,0 @@
-.characters-wrapper {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-}

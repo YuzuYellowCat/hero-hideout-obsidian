@@ -1,16 +1,18 @@
-import CharacterGrid from "components/CharacterGrid";
+import PageGrid from "components/PageGrid";
 import React, { HTMLAttributes } from "react";
 
 const COMPONENT_MAP = {
-    CharacterGrid: CharacterGrid,
+    PageGrid,
 };
 
 const ComponentInsert: React.FC<
     HTMLAttributes<HTMLElement> & {
         ["data-component-id"]?: keyof typeof COMPONENT_MAP;
+        ["data-props"]?: string;
     }
 > = (props) => {
     const componentName = props["data-component-id"];
+    const propsString = props["data-props"];
     const ComponentOverride = componentName
         ? COMPONENT_MAP[componentName]
         : undefined;
@@ -19,7 +21,9 @@ const ComponentInsert: React.FC<
         return <div {...props} />;
     }
 
-    return <ComponentOverride />;
+    const componentProps = propsString ? JSON.parse(propsString) : {};
+
+    return <ComponentOverride {...componentProps} />;
 };
 
 export default ComponentInsert;

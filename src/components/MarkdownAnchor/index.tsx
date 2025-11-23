@@ -5,6 +5,7 @@ import React, {
     useState,
 } from "react";
 import { useNavigate } from "react-router";
+import "./index.css";
 
 const MarkdownAnchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (
     props
@@ -37,7 +38,13 @@ const MarkdownAnchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (
     }, [isLocal, link, navigate]);
 
     return (
-        <a {...props} {...anchorNavProps}>
+        <a
+            className="markdown-anchor"
+            {...props}
+            {...anchorNavProps}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             {props.children}
         </a>
     );

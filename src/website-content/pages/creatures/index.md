@@ -1,9 +1,7 @@
 ---
 title: Creatures
-color: "#123456"
+color: "#ebfffe"
 ---
+<div data-component-id="PageGrid" data-props='{"folder": "./creatures"}'></div>
 
-This is for all the creatures out there???
-
-<div data-component-id="CharacterGrid" />
-
+Icons by [KiyoneScarlet](https://bsky.app/profile/kiyonescarlet.bsky.social)

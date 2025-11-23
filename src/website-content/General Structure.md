@@ -15,3 +15,4 @@
 			- (post id) - the specific post
 				- can link to creatures who are friends
 				- has tags that can be filtered on
+	- Blog (?)
