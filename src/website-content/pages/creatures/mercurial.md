@@ -1,7 +1,7 @@
 ---
 color: "#BA0203"
 title: Mercurial
-img: mercurial.png
+img: character-icons/mercurial.png
 ---
 ---
 ## Main Ref

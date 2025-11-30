@@ -1,7 +1,7 @@
 ---
 color: "#FFE76B"
 title: Yuzu
-img: yuzu.png
+img: character-icons/yuzu.png
 ---
 ---
 ## Main Ref

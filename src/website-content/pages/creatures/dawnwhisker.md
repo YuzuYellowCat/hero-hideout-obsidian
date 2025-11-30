@@ -1,7 +1,7 @@
 ---
 color: "#1B86A7"
 title: DawnWhisker
-img: dawnwhisker.png
+img: character-icons/dawnwhisker.png
 ---
 ---
 ## Main Ref

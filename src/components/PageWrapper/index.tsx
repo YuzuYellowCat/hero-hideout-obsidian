@@ -12,7 +12,7 @@ type PageWrapperProps = {
 
 const PageWrapper: React.FC<PropsWithChildren<PageWrapperProps>> = ({
     children,
-    color = "#ffffff",
+    color = "#000",
     title,
     alignItems = "inherit",
 }) => {

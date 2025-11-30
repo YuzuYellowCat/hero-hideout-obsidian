@@ -1,0 +1,8 @@
+---
+title: DawnWhisker Wingit
+color: rgb(251, 234, 164)
+img: art-posts/2025-07-29_jonasart.png
+---
+![[art-posts/2025-07-29_jonasart.png|An illustration of a yellow cat hero wearing a teal spandex suit jumping out of a portal]]
+
+Art by [Jonas](https://bsky.app/profile/artofjonas.bsky.social)
