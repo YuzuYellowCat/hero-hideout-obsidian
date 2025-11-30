@@ -7,6 +7,7 @@ import MarkdownAnchor from "components/MarkdownAnchor";
 import { useLocation } from "react-router";
 import NotFound from "pages/NotFound";
 import {
+    scrollToText,
     webPathToMarkdownPage,
     type MarkdownPageProperties,
 } from "utils/markdownManager";
@@ -25,12 +26,13 @@ const MarkdownPage: React.FC = () => {
         webPathToMarkdownPage(location.pathname)
             .then((pageNode) => {
                 setPage(pageNode);
+                scrollToText(location.hash);
             })
             .catch(() => {})
             .finally(() => {
                 setLoading(false);
             });
-    }, [location.pathname]);
+    }, [location.pathname, location.hash]);
 
     if (loading) {
         return <></>;

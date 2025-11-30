@@ -1,5 +1,5 @@
 import React, {
-    AnchorHTMLAttributes,
+    type AnchorHTMLAttributes,
     useEffect,
     useMemo,
     useState,
@@ -16,7 +16,8 @@ const MarkdownAnchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (
 
     useEffect(() => {
         let _link = props.href || "";
-        setIsLocal(_link?.startsWith("pages") ?? false);
+
+        setIsLocal(_link?.startsWith("pages") || _link.startsWith("#"));
         if (_link.startsWith("pages")) {
             _link = _link?.replace("pages", "");
             _link = _link?.replace("/index", "");
@@ -30,21 +31,19 @@ const MarkdownAnchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (
     const anchorNavProps = useMemo(() => {
         if (isLocal) {
             return {
-                onClick: () => navigate(link),
+                onClick: (e: React.MouseEvent) => {
+                    e.preventDefault();
+                    navigate(link);
+                },
                 href: "",
+                pointerEvents: "none",
             };
         }
-        return { href: link };
+        return { href: link, target: "_blank", rel: "noopener noreferrer" };
     }, [isLocal, link, navigate]);
 
     return (
-        <a
-            className="markdown-anchor"
-            {...props}
-            {...anchorNavProps}
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+        <a className="markdown-anchor" {...props} {...anchorNavProps}>
             {props.children}
         </a>
     );

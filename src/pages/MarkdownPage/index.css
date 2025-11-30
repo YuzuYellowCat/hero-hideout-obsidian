@@ -26,6 +26,11 @@ h6 {
     font-weight: normal;
 }
 
+.markdown-page a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .markdown-page img {
     width: 100%;
 }
