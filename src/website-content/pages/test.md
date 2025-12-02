@@ -61,7 +61,7 @@ Yo a cool image
 
 ---
 
-![[art-posts/2025-07-29_jonasart.png|maybe something?]]
+![[2025-07-29_jonasart.png|maybe something?]]
 
 `code block`
 

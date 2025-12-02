@@ -7,11 +7,6 @@ export type MarkdownPageProperties = {
     img?: string;
 };
 
-export type PageGridCardProperties = MarkdownPageProperties & {
-    img: string;
-    path: string;
-};
-
 export const getDirectMarkdownPage = async (pagePath: string) => {
     const cachePath = getNavigationPath(pagePath);
 

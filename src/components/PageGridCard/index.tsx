@@ -2,11 +2,16 @@ import React from "react";
 import "./index.css";
 import LoadingBox from "components/LoadingBox";
 import useImageLoaded from "hooks/useImageLoaded";
-import { PageGridCardProperties } from "utils/markdownManager";
+import { MarkdownPageProperties } from "utils/markdownManager";
 import PagePreviewSection from "components/PagePreviewSection";
+import { PageWithPath } from "hooks/usePages";
+
+export type PageGridCardProperties = MarkdownPageProperties & {
+    img: string;
+};
 
 type PageGridCardProps = {
-    page: PageGridCardProperties;
+    page: PageWithPath<PageGridCardProperties>;
 };
 
 const PageGridCard: React.FC<PageGridCardProps> = ({ page }) => {
