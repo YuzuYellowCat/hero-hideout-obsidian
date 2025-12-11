@@ -31,4 +31,4 @@ He acts as a scout for the hero agency he works for. He's often using his portal
 
 He is over-the-top energetic, extremely eager to be a hero and really wants to look cool despite his frequent clumsiness. This means he's easily tricked and will try to do the "cool hero" thing without fully thinking through it. Also means he's able to get really beat up and he'll keep on getting up and trying to fight back even if he's clearly outmatched.
 
-Ref drawn by [imdanuki](https://bsky.app/profile/imdanuki.bsky.social)
+<center>Ref drawn by [imdanuki](https://bsky.app/profile/imdanuki.bsky.social)</center>
