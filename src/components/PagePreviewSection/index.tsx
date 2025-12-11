@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./index.css";
 import { useNavigate } from "react-router";
 
 type PagePreviewSectionProps = {
     title: string;
+    subtitle?: string;
     navigationPath: string;
     color?: string;
     hasFlourish?: boolean;
     fullHover?: boolean;
+    size?: "S" | "L";
 };
 
 const PagePreviewSection: React.FC<
@@ -16,14 +18,22 @@ const PagePreviewSection: React.FC<
     title,
     navigationPath,
     children,
+    subtitle,
     hasFlourish = true,
     fullHover = false,
     color = "#fff",
+    size = "L",
 }) => {
     const navigate = useNavigate();
+    const subtitleComponent = useMemo(() => {
+        if (!subtitle) {
+            return;
+        }
+        return <div className="page-preview-subtitle">{subtitle}</div>;
+    }, [subtitle]);
     return (
         <button
-            className="page-preview"
+            className={`page-preview preview-size-${size}`}
             style={{
                 borderColor: color,
             }}
@@ -41,6 +51,7 @@ const PagePreviewSection: React.FC<
                     }}
                 />
             </div>
+            {subtitleComponent}
             <div className="page-preview-content">{children}</div>
             <div
                 className="page-preview-bg"

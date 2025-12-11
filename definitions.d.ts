@@ -10,6 +10,7 @@ type PageGalleryListItemProperties = MarkdownPageProperties & {
 
 type PageGridCardProperties = MarkdownPageProperties & {
     img: string;
+    author?: string;
 };
 
 type PageWithPath<T> = T & {

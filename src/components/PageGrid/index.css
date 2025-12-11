@@ -1,6 +1,13 @@
 .page-grid {
     display: grid;
     padding: 8px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
+}
+
+.page-grid.size-S {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.page-grid.size-L {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }

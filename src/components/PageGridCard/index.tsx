@@ -6,19 +6,22 @@ import PagePreviewSection from "components/PagePreviewSection";
 
 type PageGridCardProps = {
     page: PageWithPath<PageGridCardProperties>;
+    size?: "S" | "L";
 };
 
-const PageGridCard: React.FC<PageGridCardProps> = ({ page }) => {
+const PageGridCard: React.FC<PageGridCardProps> = ({ page, size = "L" }) => {
     const [ref, loaded, onLoad] = useImageLoaded();
 
     return (
-        <div className="page-grid-card">
+        <div className={`page-grid-card card-size-${size}`}>
             <PagePreviewSection
                 title={page.title}
                 navigationPath={page.path}
                 color={page.color}
                 hasFlourish={false}
+                size={size}
                 fullHover
+                subtitle={page.author ? `by ${page.author}` : ""}
             >
                 <div className="page-thumbnail-wrapper">
                     {!loaded && <LoadingBox />}
