@@ -8,10 +8,10 @@ title: To-Do List
 ___
 
 * [x] Add grid options for posts vs characters
-* [ ] Add way to center text
+* [x] Add way to center text
 * [ ] Add button component
 * [ ] Add posts for gallery
-* [ ] Replace currently deployed with this one
+* [x] Replace currently deployed with this one
 * [ ] Set up grid with virtualizer
 * [ ] Disable route to page until it's past current datetime
 * [ ] optional -- set up rerouting to the standard page from ref page
