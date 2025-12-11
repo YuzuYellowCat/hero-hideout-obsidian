@@ -1,5 +1,5 @@
 ---
-title: Mercurial Evil
+title: Looming Light Crystals
 color: rgb(229, 106, 158)
 img: commissions/2025-11-10_kaze.png
 ---

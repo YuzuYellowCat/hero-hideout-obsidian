@@ -1,6 +1,6 @@
 ---
 title: My Art
-color: "#ffbe26"
-graphic: test
+color: "#ffe76b"
+isGallery: true
 ---
 <div data-component-id="PageGrid" data-props='{"folder": "./gallery/art"}'></div>

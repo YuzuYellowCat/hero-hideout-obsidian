@@ -1,6 +1,6 @@
 ---
 title: Commissions
-color: "#ffbe26"
-graphic: test
+color: "#fdd63b"
+isGallery: true
 ---
 <div data-component-id="PageGrid" data-props='{"folder": "./gallery/commission"}'></div>

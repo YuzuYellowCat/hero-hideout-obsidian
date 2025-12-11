@@ -1,6 +1,6 @@
 ---
 title: Everything
-color: "#ffbe26"
-graphic: test
+color: "#fff4b7"
+isGallery: true
 ---
 <div data-component-id="PageGrid" data-props='{"folder": "./gallery"}'></div>

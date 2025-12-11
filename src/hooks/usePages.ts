@@ -2,15 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import {
     getDirectMarkdownPage,
     getNavigationPath,
-    type MarkdownPageProperties,
 } from "utils/markdownManager";
 
 export type PageComponentProps = {
     folder: string;
-};
-
-export type PageWithPath<T> = T & {
-    path: string;
 };
 
 const usePages = <T extends MarkdownPageProperties>(

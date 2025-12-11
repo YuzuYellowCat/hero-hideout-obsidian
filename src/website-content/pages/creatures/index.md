@@ -1,6 +1,6 @@
 ---
 title: Creatures
-color: "#ebfffe"
+color: "#5affe4"
 ---
 <div data-component-id="PageGrid" data-props='{"folder": "./creatures"}'></div>
 

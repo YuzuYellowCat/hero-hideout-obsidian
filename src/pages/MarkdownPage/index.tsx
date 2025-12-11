@@ -6,11 +6,7 @@ import MarkdownImage from "components/MarkdownImage";
 import MarkdownAnchor from "components/MarkdownAnchor";
 import { useLocation } from "react-router";
 import NotFound from "pages/NotFound";
-import {
-    scrollToText,
-    webPathToMarkdownPage,
-    type MarkdownPageProperties,
-} from "utils/markdownManager";
+import { scrollToText, webPathToMarkdownPage } from "utils/markdownManager";
 import ComponentInsert from "components/ComponentInsert";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";

@@ -1,6 +1,4 @@
-import PageGridCard, {
-    type PageGridCardProperties,
-} from "components/PageGridCard";
+import PageGridCard from "components/PageGridCard";
 import React, { useCallback } from "react";
 import "./index.css";
 import usePages, { PageComponentProps } from "hooks/usePages";

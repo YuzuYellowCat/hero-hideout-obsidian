@@ -1,5 +1,5 @@
 ---
 title: Gallery
-color: "#ffbe26"
+color: "#eafffe"
 ---
-<div data-component-id="PageGraphicList" data-props='{"folder": "./gallery"}'></div>
+<div data-component-id="PageGalleryList" data-props='{"folder": "./gallery"}'></div>

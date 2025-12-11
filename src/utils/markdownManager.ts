@@ -1,12 +1,5 @@
 const _markdownPageCache = new Map<string, MarkdownPageProperties>();
 
-export type MarkdownPageProperties = {
-    content: string;
-    color: string;
-    title: string;
-    img?: string;
-};
-
 export const getDirectMarkdownPage = async (pagePath: string) => {
     const cachePath = getNavigationPath(pagePath);
 

@@ -16,3 +16,11 @@ ___
 * [ ] Disable route to page until it's past current datetime
 * [ ] optional -- set up rerouting to the standard page from ref page
 * [ ] Cron job for bluesky posting (github actions?)
+
+---
+mini brainstorm
+
+everything -- 
+art -- brush
+commissions --
+fursuit -- 

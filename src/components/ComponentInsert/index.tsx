@@ -1,10 +1,10 @@
-import PageGraphicList from "components/PageGraphicList";
+import PageGalleryList from "components/PageGalleryList";
 import PageGrid from "components/PageGrid";
 import React, { HTMLAttributes } from "react";
 
 const COMPONENT_MAP = {
     PageGrid,
-    PageGraphicList,
+    PageGalleryList,
 };
 
 const ComponentInsert: React.FC<
