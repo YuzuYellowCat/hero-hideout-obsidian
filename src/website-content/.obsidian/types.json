@@ -1,8 +1,9 @@
 {
-    "types": {
-        "aliases": "aliases",
-        "cssclasses": "multitext",
-        "tags": "tags",
-        "isGallery": "checkbox"
-    }
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "isGallery": "checkbox",
+    "date": "datetime"
+  }
 }

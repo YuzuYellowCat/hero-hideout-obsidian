@@ -2,6 +2,7 @@
 title: Putty Attack!
 color: rgb(113, 108, 103)
 img: fursuit-pics/2025-BLFC_puttyattack.jpg
+date: 2025-10-25T09:25:00
 ---
 ![[fursuit-pics/2025-BLFC_puttyattack.jpg|A yellow cat in a blue superhero spandex suit and mask is grappling with one grey feline Z putty while another grey feline Z putty holds him from behind.]]
 
