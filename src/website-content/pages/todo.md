@@ -9,10 +9,15 @@ ___
 
 * [x] Add grid options for posts vs characters
 * [x] Add way to center text
-* [ ] Add button component
-* [ ] Add posts for gallery
+* [x] Add button component
+* [x] Add posts for gallery
 * [x] Replace currently deployed with this one
-* [ ] Set up grid with virtualizer
+* [ ] Performance testing for worse connections
+	* [ ] Set up grid with virtualizer as a result?
 * [ ] Disable route to page until it's past current datetime
-* [ ] optional -- set up rerouting to the standard page from ref page
+* [ ] Sort posts by datetime
+* [ ] Add tags
+* [ ] Add "search by tag" option from the url
+* [ ] Add tag ui
+* [x] optional -- set up rerouting to the standard page from ref page
 * [ ] Cron job for bluesky posting (github actions?)

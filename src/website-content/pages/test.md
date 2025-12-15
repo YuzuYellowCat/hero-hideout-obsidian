@@ -61,7 +61,7 @@ Yo a cool image
 
 ---
 
-![[2025-07-29_jonasart.png|maybe something?]]
+![[commissions/2025-07-29_jonasart.png|maybe something?]]
 
 `code block`
 
@@ -70,6 +70,10 @@ large code block
 ```
 
 [link to something](https://bsky.app/profile/yuzucat.com)
+<button href="https://bsky.app/profile/yuzucat.com">cool button</button>
+<button href="https://bsky.app/profile/yuzucat.com" quiet="true">quiet button</button>
+<button href="https://bsky.app/profile/yuzucat.com" variant="secondary">secondary button</button>
+<button href="pages/gallery" quiet="true">gallery</button>
 
 ~~Strikethrough~~
 

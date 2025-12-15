@@ -15,9 +15,7 @@ const NotFound: React.FC = () => {
                 You were looking for a cat, but all you found was an empty
                 cardboard box...
             </p>
-            <Button onClick={() => navigate("/")} quiet>
-                Check back at home
-            </Button>
+            <Button onClick={() => navigate("/")}>Check back at home</Button>
         </PageWrapper>
     );
 };

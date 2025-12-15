@@ -34,3 +34,7 @@ h6 {
 .markdown-page img {
     width: 100%;
 }
+
+.markdown-page br {
+    margin: 8px;
+}

@@ -10,6 +10,7 @@ import { scrollToText, webPathToMarkdownPage } from "utils/markdownManager";
 import ComponentInsert from "components/ComponentInsert";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import MarkdownButton from "components/MarkdownButton";
 
 const MarkdownPage: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -46,6 +47,7 @@ const MarkdownPage: React.FC = () => {
                         img: MarkdownImage,
                         a: MarkdownAnchor,
                         div: ComponentInsert,
+                        button: MarkdownButton,
                     }}
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
