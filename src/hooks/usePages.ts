@@ -44,6 +44,12 @@ const usePages = <T extends MarkdownPageProperties>(
                 }
                 return pageFilter?.(page);
             }) as PageWithPath<T>[];
+            filteredPages.sort((a, b) => {
+                if (!a.date || !b.date) {
+                    return 0;
+                }
+                return b.date.getTime() - a.date.getTime();
+            });
             setNodes(filteredPages);
         });
     }, [filteredPages, pageFilter]);

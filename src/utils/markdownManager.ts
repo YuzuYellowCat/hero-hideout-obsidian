@@ -70,17 +70,17 @@ export const rawMarkdownTransform = (raw: string) => {
     let content = raw.replace(/---\n[\S\s]+?---/, "");
     const propertiesString = raw.replace(content, "");
     content = content.replaceAll(/\[\[(.*)\|(.*)]\]/g, "[$2]($1)");
-    let properties: Partial<MarkdownPageProperties> = {};
+    let properties: { [key: string]: any } = {};
     propertiesString.split("\n").forEach((property) => {
         if (property === "---") {
             return undefined;
         }
         const [name, value] = property.split(": ");
-        properties[name as keyof MarkdownPageProperties] = value?.replaceAll(
-            '"',
-            ""
-        );
+        properties[name] = value?.replaceAll('"', "");
     });
+    if (properties.date) {
+        properties.date = new Date(properties.date);
+    }
     return {
         content,
         ...DEFAULT_PROPERTIES,

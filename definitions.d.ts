@@ -2,6 +2,7 @@ type MarkdownPageProperties = {
     content: string;
     color: string;
     title: string;
+    date?: Date;
 };
 
 type PageGalleryListItemProperties = MarkdownPageProperties & {
@@ -10,6 +11,7 @@ type PageGalleryListItemProperties = MarkdownPageProperties & {
 
 type PageGridCardProperties = MarkdownPageProperties & {
     img: string;
+    date: Date;
     author?: string;
 };
 
