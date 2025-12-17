@@ -1,11 +1,11 @@
 ---
 title: Digital Heroics
 color: rgb(159, 118, 198)
-img: commissions/2025-12-24_yuzupool.png
+img: commissions/2025-12-14_yuzupool.png
 author: yuzupool
 date: 2025-12-14T20:45:00
 ---
-![[commissions/2025-12-24_yuzupool.png|DawnWhisker leaping through a circuit-laden setting with a VHS filter to thrust an antivirus USB into the evil program's core, fighting off attacks joyously.]]
+![[commissions/2025-12-14_yuzupool.png|DawnWhisker leaping through a circuit-laden setting with a VHS filter to thrust an antivirus USB into the evil program's core, fighting off attacks joyously.]]
 
 Art by [yuzupool](https://bsky.app/profile/yuzupool.bsky.social)
 
