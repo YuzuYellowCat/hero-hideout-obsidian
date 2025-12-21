@@ -31,8 +31,10 @@ h6 {
     cursor: pointer;
 }
 
-.markdown-page img {
+.markdown-page .md-img {
     width: 100%;
+    cursor: pointer;
+    image-rendering: optimizeQuality;
 }
 
 .markdown-page br {

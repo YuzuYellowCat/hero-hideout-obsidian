@@ -14,13 +14,13 @@ ___
 * [x] Replace currently deployed with this one
 * [ ] Performance testing for worse connections
 	* [ ] Set up grid with virtualizer as a result?
-* [ ] Disable route to page until it's past current datetime
+* [x] Disable route to page until it's past current datetime
 * [x] Sort posts by datetime
 * [ ] Add tags
 * [ ] Add "search by tag" option from the url
 * [ ] Add tag ui
-* [ ] NSFW switch and card variant
+* [ ] content visibility settings
 * [x] optional -- set up rerouting to the standard page from ref page
 * [ ] Cron job for bluesky posting (github actions?)
 * [ ] Add embed previews for images on the page
-* [ ] Clickable image carousel
+* [x] Clickable images

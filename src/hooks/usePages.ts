@@ -1,8 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import {
+    ContentLevelContext,
+    ContentSetting,
+} from "contexts/contentLevelContext";
+import { useContext, useEffect, useMemo, useState } from "react";
 import {
     getDirectMarkdownPage,
     getNavigationPath,
-} from "utils/markdownManager";
+    isReleasedPage,
+} from "utils/markdownUtils";
 
 export type PageComponentProps = {
     folder: string;
@@ -12,6 +17,7 @@ const usePages = <T extends MarkdownPageProperties>(
     folder: string,
     pageFilter: (page: PageWithPath<T>) => boolean = () => true
 ) => {
+    const { getVisibilitySetting } = useContext(ContentLevelContext);
     const [nodes, setNodes] = useState<PageWithPath<T>[]>([]);
     const pages = useMemo(() => require.context("website-content/pages/"), []);
     const filteredPages = useMemo(
@@ -39,7 +45,11 @@ const usePages = <T extends MarkdownPageProperties>(
             })
         ).then((pages) => {
             const filteredPages = pages.filter((page) => {
-                if (!page) {
+                if (
+                    !page ||
+                    !isReleasedPage(page) ||
+                    getVisibilitySetting(page.level) === ContentSetting.HIDE
+                ) {
                     return false;
                 }
                 return pageFilter?.(page);
@@ -52,7 +62,7 @@ const usePages = <T extends MarkdownPageProperties>(
             });
             setNodes(filteredPages);
         });
-    }, [filteredPages, pageFilter]);
+    }, [filteredPages, pageFilter, getVisibilitySetting]);
 
     return nodes;
 };

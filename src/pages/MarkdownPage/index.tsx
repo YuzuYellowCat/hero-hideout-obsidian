@@ -6,7 +6,11 @@ import MarkdownImage from "components/MarkdownImage";
 import MarkdownAnchor from "components/MarkdownAnchor";
 import { useLocation } from "react-router";
 import NotFound from "pages/NotFound";
-import { scrollToText, webPathToMarkdownPage } from "utils/markdownManager";
+import {
+    isReleasedPage,
+    scrollToText,
+    webPathToMarkdownPage,
+} from "utils/markdownUtils";
 import ComponentInsert from "components/ComponentInsert";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -35,7 +39,7 @@ const MarkdownPage: React.FC = () => {
         return <></>;
     }
 
-    if (!loading && page === null) {
+    if (!loading && (page === null || !isReleasedPage(page))) {
         return <NotFound />;
     }
 

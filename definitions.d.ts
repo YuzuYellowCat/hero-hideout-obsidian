@@ -3,6 +3,7 @@ type MarkdownPageProperties = {
     color: string;
     title: string;
     date?: Date;
+    level: ContentLevel;
 };
 
 type PageGalleryListItemProperties = MarkdownPageProperties & {

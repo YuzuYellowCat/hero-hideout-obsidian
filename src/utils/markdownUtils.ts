@@ -1,3 +1,5 @@
+import { ContentLevel } from "contexts/contentLevelContext";
+
 const _markdownPageCache = new Map<string, MarkdownPageProperties>();
 
 export const getDirectMarkdownPage = async (pagePath: string) => {
@@ -64,6 +66,7 @@ const _parseMarkdownText = (textContent: string | void, path: string) => {
 const DEFAULT_PROPERTIES = {
     color: "#ffffff",
     title: "[TITLE NOT FOUND]",
+    level: ContentLevel.SFW,
 };
 
 export const rawMarkdownTransform = (raw: string) => {
@@ -80,6 +83,13 @@ export const rawMarkdownTransform = (raw: string) => {
     });
     if (properties.date) {
         properties.date = new Date(properties.date);
+    }
+    if (properties.isNSFW === "true") {
+        properties.level = ContentLevel.NSFW;
+        delete properties.isNSFW;
+    } else if (properties.isSuggestive === "true") {
+        properties.level = ContentLevel.SUGGESTIVE;
+        delete properties.isSuggestive;
     }
     return {
         content,
@@ -102,4 +112,12 @@ export const scrollToText = (hash: string) => {
             element.scrollIntoView();
         }
     }
+};
+
+export const isReleasedPage = (page: MarkdownPageProperties) => {
+    // No date, meaning it can't be in the future
+    if (!page.date) {
+        return true;
+    }
+    return page.date?.valueOf() <= Date.now().valueOf();
 };

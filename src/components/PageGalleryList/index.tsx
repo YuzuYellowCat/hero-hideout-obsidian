@@ -5,7 +5,7 @@ import usePages, { PageComponentProps } from "hooks/usePages";
 
 const PageGraphicList: React.FC<PageComponentProps> = ({ folder }) => {
     const pageFilter = useCallback((page: PageGalleryListItemProperties) => {
-        return !!page.isGallery;
+        return page.isGallery === "true";
     }, []);
 
     const pages = usePages<PageGalleryListItemProperties>(folder, pageFilter);
