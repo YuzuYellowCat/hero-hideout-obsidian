@@ -3,7 +3,7 @@ import "./index.css";
 import PagePreviewSection from "components/PagePreviewSection";
 
 type PageGalleryListItemProps = {
-    page: PageWithPath<PageGalleryListItemProperties>;
+    page: PageWithPath<GalleryPageProperties>;
 };
 
 const PageGalleryListItem: React.FC<PageGalleryListItemProps> = ({ page }) => {

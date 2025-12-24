@@ -4,11 +4,11 @@ import "./index.css";
 import usePages, { PageComponentProps } from "hooks/usePages";
 
 const PageGraphicList: React.FC<PageComponentProps> = ({ folder }) => {
-    const pageFilter = useCallback((page: PageGalleryListItemProperties) => {
+    const pageFilter = useCallback((page: GalleryPageProperties) => {
         return page.isGallery === "true";
     }, []);
 
-    const pages = usePages<PageGalleryListItemProperties>(folder, pageFilter);
+    const pages = usePages<GalleryPageProperties>(folder, pageFilter);
 
     return (
         <div className="page-graphic-list">

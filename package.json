@@ -15,6 +15,7 @@
         "classnames": "^2.5.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
+        "react-helmet": "^6.1.0",
         "react-markdown": "^10.1.0",
         "react-router": "^7.9.5",
         "react-scripts": "5.0.1",
@@ -53,6 +54,7 @@
         ]
     },
     "devDependencies": {
+        "@types/react-helmet": "^6.1.11",
         "@types/webpack-env": "^1.18.8"
     }
 }

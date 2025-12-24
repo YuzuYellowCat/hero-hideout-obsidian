@@ -12,6 +12,11 @@
     border: 1px solid;
 }
 
+.button-size-S.button {
+    padding: 4px;
+    font-size: 14px;
+}
+
 .button:hover,
 .button:focus-visible {
     background-color: transparent !important;

@@ -7,7 +7,7 @@ import MarkdownAnchor from "components/MarkdownAnchor";
 import { useLocation } from "react-router";
 import NotFound from "pages/NotFound";
 import {
-    isReleasedPage,
+    isReleasedDate,
     scrollToText,
     webPathToMarkdownPage,
 } from "utils/markdownUtils";
@@ -15,10 +15,12 @@ import ComponentInsert from "components/ComponentInsert";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import MarkdownButton from "components/MarkdownButton";
+import ContentFilterWrapper from "components/ContentFilterWrapper";
+import MetaHandler from "components/MetaHandler";
 
 const MarkdownPage: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
-    const [page, setPage] = useState<MarkdownPageProperties | null>(null);
+    const [page, setPage] = useState<GeneralPageType | null>(null);
     const location = useLocation();
 
     useEffect(() => {
@@ -39,26 +41,31 @@ const MarkdownPage: React.FC = () => {
         return <></>;
     }
 
-    if (!loading && (page === null || !isReleasedPage(page))) {
+    if (page === null || !isReleasedDate(page.date)) {
         return <NotFound />;
     }
 
+    const pageWithPath = { ...page, path: location.pathname };
+
     return (
-        <PageWrapper color={page?.color} title={page?.title}>
+        <PageWrapper color={page.color} title={page.title}>
+            <MetaHandler page={pageWithPath} />
             <div className="markdown-page">
-                <ReactMarkdown
-                    components={{
-                        img: MarkdownImage,
-                        a: MarkdownAnchor,
-                        div: ComponentInsert,
-                        button: MarkdownButton,
-                    }}
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                    skipHtml={false}
-                >
-                    {page?.content}
-                </ReactMarkdown>
+                <ContentFilterWrapper page={pageWithPath} size="M">
+                    <ReactMarkdown
+                        components={{
+                            img: MarkdownImage,
+                            a: MarkdownAnchor,
+                            div: ComponentInsert,
+                            button: MarkdownButton,
+                        }}
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                        skipHtml={false}
+                    >
+                        {page.content}
+                    </ReactMarkdown>
+                </ContentFilterWrapper>
             </div>
         </PageWrapper>
     );

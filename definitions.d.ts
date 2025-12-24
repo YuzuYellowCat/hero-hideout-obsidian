@@ -6,15 +6,25 @@ type MarkdownPageProperties = {
     level: ContentLevel;
 };
 
-type PageGalleryListItemProperties = MarkdownPageProperties & {
+type GalleryPageUniqueProperties = {
     isGallery: string;
 };
 
-type PageGridCardProperties = MarkdownPageProperties & {
+type GalleryPageProperties = MarkdownPageProperties &
+    GalleryPageUniqueProperties;
+
+type ImagePageUniqueProperties = {
     img: string;
     date: Date;
     author?: string;
 };
+
+type ImagePageProperties = MarkdownPageProperties & ImagePageUniqueProperties;
+
+type GeneralPageType =
+    | MarkdownPageProperties
+    | ImagePageProperties
+    | GalleryPageProperties;
 
 type PageWithPath<T> = T & {
     path: string;

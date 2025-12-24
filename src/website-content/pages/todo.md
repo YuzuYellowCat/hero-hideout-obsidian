@@ -24,3 +24,8 @@ ___
 * [ ] Cron job for bluesky posting (github actions?)
 * [ ] Add embed previews for images on the page
 * [x] Clickable images
+* [ ] Move 404 to metadata page
+
+Easter Eggs / Fun Stuff:
+* [ ] different cursor effect based on different content view settings
+* [ ] bisexual title stripe colors for pride month

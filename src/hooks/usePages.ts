@@ -6,7 +6,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import {
     getDirectMarkdownPage,
     getNavigationPath,
-    isReleasedPage,
+    isReleasedDate,
 } from "utils/markdownUtils";
 
 export type PageComponentProps = {
@@ -32,23 +32,27 @@ const usePages = <T extends MarkdownPageProperties>(
     useEffect(() => {
         Promise.all(
             filteredPages.map(async (page) => {
-                const directMDPage = (await getDirectMarkdownPage(
-                    page
-                )) as T | null;
-                if (!directMDPage) {
+                try {
+                    const directMDPage = (await getDirectMarkdownPage(
+                        page
+                    )) as T | null;
+                    if (!directMDPage) {
+                        return;
+                    }
+                    return {
+                        ...directMDPage,
+                        path: getNavigationPath(page),
+                    };
+                } catch {
                     return;
                 }
-                return {
-                    ...directMDPage,
-                    path: getNavigationPath(page),
-                };
             })
         ).then((pages) => {
             const filteredPages = pages.filter((page) => {
                 if (
                     !page ||
-                    !isReleasedPage(page) ||
-                    getVisibilitySetting(page.level) === ContentSetting.HIDE
+                    !isReleasedDate(page.date) ||
+                    getVisibilitySetting(page) === ContentSetting.HIDE
                 ) {
                     return false;
                 }

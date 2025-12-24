@@ -3,9 +3,10 @@ import "./index.css";
 import LoadingBox from "components/LoadingBox";
 import useImageLoaded from "hooks/useImageLoaded";
 import PagePreviewSection from "components/PagePreviewSection";
+import ContentFilterWrapper from "components/ContentFilterWrapper";
 
 type PageGridCardProps = {
-    page: PageWithPath<PageGridCardProperties>;
+    page: PageWithPath<ImagePageProperties>;
     size?: "S" | "L";
 };
 
@@ -25,12 +26,14 @@ const PageGridCard: React.FC<PageGridCardProps> = ({ page, size = "L" }) => {
             >
                 <div className="page-thumbnail-wrapper">
                     {!loaded && <LoadingBox />}
-                    <img
-                        src={require(`website-content/images/${page.img}`)}
-                        alt={`A card for the page "${page.title}"`}
-                        ref={ref}
-                        onLoad={onLoad}
-                    />
+                    <ContentFilterWrapper page={page} size="S">
+                        <img
+                            src={require(`website-content/images/${page.img}`)}
+                            alt={`A card for the page "${page.title}"`}
+                            ref={ref}
+                            onLoad={onLoad}
+                        />
+                    </ContentFilterWrapper>
                 </div>
             </PagePreviewSection>
         </div>

@@ -7,14 +7,18 @@ type ButtonProps = {
     color?: string;
     variant?: "primary" | "secondary";
     quiet?: boolean;
+    size?: "S" | "M" | "L";
     onClick: React.MouseEventHandler<HTMLButtonElement>;
+    className?: string;
 };
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
     children,
     color = "#ffffff",
+    size = "M",
     variant = "primary",
     quiet = false,
+    className,
     onClick,
 }) => {
     const buttonColorStyle = quiet
@@ -30,7 +34,9 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
         <button
             className={classNames("button", {
                 [`button-${variant}`]: true,
+                [`button-size-${size}`]: true,
                 "button-quiet": quiet,
+                className,
             })}
             style={buttonColorStyle}
             onClick={onClick}

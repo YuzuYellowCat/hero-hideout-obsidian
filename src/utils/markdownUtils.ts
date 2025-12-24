@@ -83,6 +83,9 @@ export const rawMarkdownTransform = (raw: string) => {
     });
     if (properties.date) {
         properties.date = new Date(properties.date);
+        if (!isReleasedDate(properties.date)) {
+            throw new Error("This page has not been released yet");
+        }
     }
     if (properties.isNSFW === "true") {
         properties.level = ContentLevel.NSFW;
@@ -91,11 +94,13 @@ export const rawMarkdownTransform = (raw: string) => {
         properties.level = ContentLevel.SUGGESTIVE;
         delete properties.isSuggestive;
     }
-    return {
+    const page = {
         content,
         ...DEFAULT_PROPERTIES,
         ...properties,
     };
+
+    return page;
 };
 
 export const scrollToText = (hash: string) => {
@@ -114,10 +119,10 @@ export const scrollToText = (hash: string) => {
     }
 };
 
-export const isReleasedPage = (page: MarkdownPageProperties) => {
+export const isReleasedDate = (date?: Date) => {
     // No date, meaning it can't be in the future
-    if (!page.date) {
+    if (!date) {
         return true;
     }
-    return page.date?.valueOf() <= Date.now().valueOf();
+    return date.valueOf() <= Date.now().valueOf();
 };

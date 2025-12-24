@@ -1,9 +1,9 @@
 import React, { createContext, useMemo, useState } from "react";
 
 export enum ContentLevel {
-    SFW = "sfw",
+    SFW = "SFW",
     SUGGESTIVE = "suggestive",
-    NSFW = "nsfw",
+    NSFW = "NSFW",
 }
 
 export enum ContentSetting {
@@ -17,16 +17,25 @@ type ContentLevelRecordType = Record<ContentLevel, ContentSetting>;
 const DEFAULT_CONTENT_LEVEL: ContentLevelRecordType = {
     [ContentLevel.SFW]: ContentSetting.SHOW,
     [ContentLevel.SUGGESTIVE]: ContentSetting.WARN,
-    [ContentLevel.NSFW]: ContentSetting.HIDE,
+    [ContentLevel.NSFW]: ContentSetting.WARN,
 };
 
 type ContentLevelContextType = {
-    getVisibilitySetting: (level: ContentLevel) => ContentSetting;
+    getVisibilitySetting: (
+        page: PageWithPath<MarkdownPageProperties>
+    ) => ContentSetting;
+    setVisibilityOverride: (
+        page: PageWithPath<MarkdownPageProperties>,
+        value: ContentSetting
+    ) => void;
     updateSetting: (level: ContentLevel, value: ContentSetting) => void;
 };
 
 export const ContentLevelContext = createContext<ContentLevelContextType>({
     getVisibilitySetting: () => {
+        throw new Error("Content Level Context Not Initialized");
+    },
+    setVisibilityOverride: () => {
         throw new Error("Content Level Context Not Initialized");
     },
     updateSetting: () => {
@@ -40,11 +49,27 @@ export const ContentLevelProvider: React.FC<React.PropsWithChildren> = ({
     const [contentLevel, setContentLevel] = useState<ContentLevelRecordType>(
         DEFAULT_CONTENT_LEVEL
     );
+    const [pageViewOverrides, setPageViewOverrides] = useState<
+        Map<string, ContentSetting>
+    >(new Map());
 
     const contentLevelInterface = useMemo(
         () => ({
-            getVisibilitySetting: (level: ContentLevel) => {
-                return contentLevel[level];
+            getVisibilitySetting: (
+                page: PageWithPath<MarkdownPageProperties>
+            ) => {
+                return (
+                    pageViewOverrides.get(page.path) ??
+                    contentLevel[page.level as ContentLevel]
+                );
+            },
+            setVisibilityOverride: (
+                page: PageWithPath<MarkdownPageProperties>,
+                value: ContentSetting
+            ) => {
+                const newMap = new Map(pageViewOverrides);
+                newMap.set(page.path, value);
+                setPageViewOverrides(newMap);
             },
             updateSetting: (level: ContentLevel, value: ContentSetting) => {
                 setContentLevel({
@@ -53,7 +78,7 @@ export const ContentLevelProvider: React.FC<React.PropsWithChildren> = ({
                 });
             },
         }),
-        [contentLevel]
+        [contentLevel, pageViewOverrides]
     );
     return (
         <ContentLevelContext.Provider value={contentLevelInterface}>

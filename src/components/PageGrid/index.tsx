@@ -8,11 +8,11 @@ type PageGridProps = PageComponentProps & {
 };
 
 const PageGrid: React.FC<PageGridProps> = ({ size, folder }) => {
-    const pageFilter = useCallback((page: PageGridCardProperties) => {
+    const pageFilter = useCallback((page: ImagePageProperties) => {
         return !!page.img;
     }, []);
 
-    const pages = usePages<PageGridCardProperties>(folder, pageFilter);
+    const pages = usePages<ImagePageProperties>(folder, pageFilter);
     const gridSize = size ?? "L";
 
     return (
