@@ -31,7 +31,7 @@ const MetaHandler: React.FC<MetaHandlerProps> = ({ page }) => {
             optionalMetaTags.push(
                 <meta
                     property="article:section"
-                    content={pathSections[pathSections.length - 1]}
+                    content={pathSections[pathSections.length - 2]}
                 />
             );
         }
@@ -40,7 +40,7 @@ const MetaHandler: React.FC<MetaHandlerProps> = ({ page }) => {
             optionalMetaTags.push(
                 <meta
                     property="article:published_time"
-                    content={page.date?.toString()}
+                    content={page.date.toISOString()}
                 />
             );
         }
