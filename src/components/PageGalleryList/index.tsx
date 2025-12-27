@@ -1,3 +1,4 @@
+"use client";
 import PageGalleryListItem from "components/PageGalleryListItem";
 import React, { useCallback } from "react";
 import "./index.css";

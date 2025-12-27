@@ -1,12 +1,13 @@
+"use client";
 import React, { type AnchorHTMLAttributes, useMemo } from "react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import "./index.css";
 import useWebLink from "hooks/useWebLink";
 
 const MarkdownAnchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (
     props
 ) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { link, isLocal } = useWebLink(props.href);
 
     const anchorNavProps = useMemo(() => {
@@ -14,14 +15,14 @@ const MarkdownAnchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (
             return {
                 onClick: (e: React.MouseEvent) => {
                     e.preventDefault();
-                    navigate(link);
+                    router.push(link);
                 },
                 href: "",
                 pointerEvents: "none",
             };
         }
         return { href: link, target: "_blank", rel: "noopener noreferrer" };
-    }, [isLocal, link, navigate]);
+    }, [isLocal, link, router]);
 
     return (
         <a className="markdown-anchor" {...props} {...anchorNavProps}>

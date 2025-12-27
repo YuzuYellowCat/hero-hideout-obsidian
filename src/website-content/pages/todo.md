@@ -23,6 +23,7 @@ ___
 * [x] optional -- set up rerouting to the standard page from ref page
 * [ ] Cron job for bluesky posting (github actions?)
 * [ ] Add embed previews for images on the page
+	* [ ]  https://prerender.io/ ?
 * [x] Clickable images
 * [ ] Move 404 to metadata page
 

@@ -1,5 +1,6 @@
 .button {
-    all: auto;
+    width: fit-content;
+    height: fit-content;
     cursor: pointer;
     display: flex;
     padding: 8px;

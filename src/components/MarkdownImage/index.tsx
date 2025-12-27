@@ -1,3 +1,4 @@
+"use client";
 import { DialogContext } from "contexts/dialogContext";
 import React, { ImgHTMLAttributes, useCallback, useMemo } from "react";
 
@@ -8,7 +9,7 @@ const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
     const imageProps = useMemo(
         () => ({
             ...props,
-            src: require(`website-content/images/${props.src}`),
+            src: require(`website-content/images/${props.src}`).default.src,
         }),
         [props]
     );

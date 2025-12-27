@@ -1,57 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PageWrapper from "components/PageWrapper";
 import ReactMarkdown from "react-markdown";
 import "./index.css";
 import MarkdownImage from "components/MarkdownImage";
 import MarkdownAnchor from "components/MarkdownAnchor";
-import { useLocation } from "react-router";
 import NotFound from "pages/NotFound";
-import {
-    isReleasedDate,
-    scrollToText,
-    webPathToMarkdownPage,
-} from "utils/markdownUtils";
 import ComponentInsert from "components/ComponentInsert";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import MarkdownButton from "components/MarkdownButton";
 import ContentFilterWrapper from "components/ContentFilterWrapper";
 import MetaHandler from "components/MetaHandler";
+import { isPageReleased } from "utils/markdownClientUtils";
 
-const MarkdownPage: React.FC = () => {
-    const [loading, setLoading] = useState<boolean>(true);
-    const [page, setPage] = useState<GeneralPageType | null>(null);
-    const location = useLocation();
-
-    useEffect(() => {
-        setLoading(true);
-        setPage(null);
-        webPathToMarkdownPage(location.pathname)
-            .then((pageNode) => {
-                setPage(pageNode);
-                scrollToText(location.hash);
-            })
-            .catch(() => {})
-            .finally(() => {
-                setLoading(false);
-            });
-    }, [location.pathname, location.hash]);
-
-    if (loading) {
-        return <></>;
-    }
-
-    if (page === null || !isReleasedDate(page.date)) {
+const MarkdownPage: React.FC<{ page?: PageWithPath<GeneralPageType> }> = ({
+    page,
+}) => {
+    if (page === undefined || !isPageReleased(page)) {
         return <NotFound />;
     }
 
-    const pageWithPath = { ...page, path: location.pathname };
-
     return (
         <PageWrapper color={page.color} title={page.title}>
-            <MetaHandler page={pageWithPath} />
             <div className="markdown-page">
-                <ContentFilterWrapper page={pageWithPath} size="M">
+                <ContentFilterWrapper page={page} size="M">
                     <ReactMarkdown
                         components={{
                             img: MarkdownImage,

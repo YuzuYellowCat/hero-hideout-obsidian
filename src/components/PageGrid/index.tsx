@@ -1,3 +1,4 @@
+"use client";
 import PageGridCard from "components/PageGridCard";
 import React, { useCallback } from "react";
 import "./index.css";

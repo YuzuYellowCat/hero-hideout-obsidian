@@ -13,22 +13,21 @@
         "@types/react": "^19.1.0",
         "@types/react-dom": "^19.1.1",
         "classnames": "^2.5.1",
+        "next": "^16.1.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-helmet": "^6.1.0",
         "react-markdown": "^10.1.0",
-        "react-router": "^7.9.5",
-        "react-scripts": "5.0.1",
+        "react-scripts": "^0.0.0",
         "rehype-raw": "^7.0.0",
         "remark-gfm": "^4.0.1",
         "typescript": "^4.9.5",
         "web-vitals": "^4.0.0"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "dev": "next dev --webpack",
+        "build": "next build --webpack",
+        "start": "npx serve@latest ./build"
     },
     "browser": {
         "fs": false,
@@ -54,7 +53,9 @@
         ]
     },
     "devDependencies": {
+        "@svgr/webpack": "^8.1.0",
         "@types/react-helmet": "^6.1.11",
-        "@types/webpack-env": "^1.18.8"
+        "@types/webpack-env": "^1.18.8",
+        "raw-loader": "^4.0.2"
     }
 }

@@ -1,11 +1,10 @@
+"use client";
 import React from "react";
 import { Helmet } from "react-helmet";
 
-type MetaHandlerProps = {
-    page: PageWithPath<GeneralPageType>;
-};
-
-const MetaHandler: React.FC<MetaHandlerProps> = ({ page }) => {
+const MetaHandler: React.FC<{ page: PageWithPath<GeneralPageType> }> = ({
+    page,
+}) => {
     const optionalMetaTags = [];
 
     // If there's an image string, we want to add image-specific info into it
@@ -14,7 +13,10 @@ const MetaHandler: React.FC<MetaHandlerProps> = ({ page }) => {
         optionalMetaTags.push(
             <meta
                 property="og:image"
-                content={require(`website-content/images/${imagePage.img}`)}
+                content={
+                    require(`website-content/images/${imagePage.img}`).default
+                        .src
+                }
             />,
             <meta property="og:image:alt" content="TODO put alt text here" />
         );

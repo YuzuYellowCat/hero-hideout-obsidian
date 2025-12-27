@@ -1,13 +1,11 @@
+"use client";
 import {
     ContentLevelContext,
     ContentSetting,
 } from "contexts/contentLevelContext";
-import { useContext, useEffect, useMemo, useState } from "react";
-import {
-    getDirectMarkdownPage,
-    getNavigationPath,
-    isReleasedDate,
-} from "utils/markdownUtils";
+import { useContext, useMemo } from "react";
+import usePageData from "./usePageData";
+import { isPageReleased } from "utils/markdownClientUtils";
 
 export type PageComponentProps = {
     folder: string;
@@ -18,57 +16,40 @@ const usePages = <T extends MarkdownPageProperties>(
     pageFilter: (page: PageWithPath<T>) => boolean = () => true
 ) => {
     const { getVisibilitySetting } = useContext(ContentLevelContext);
-    const [nodes, setNodes] = useState<PageWithPath<T>[]>([]);
-    const pages = useMemo(() => require.context("website-content/pages/"), []);
+    const pages = usePageData();
     const filteredPages = useMemo(
         () =>
             pages
                 .keys()
-                .filter((page) => page.startsWith(folder))
-                .map((page) => page.slice(1)),
-        [pages, folder]
+                .toArray()
+                .filter((path) => path.startsWith(folder))
+                .map(
+                    (path) =>
+                        ({
+                            path,
+                            ...pages.get(path),
+                        } as PageWithPath<T>)
+                )
+                .filter((page) => {
+                    if (
+                        !page ||
+                        !isPageReleased(page) ||
+                        getVisibilitySetting(page) === ContentSetting.HIDE
+                    ) {
+                        return false;
+                    }
+                    return pageFilter?.(page);
+                })
+                .sort((a, b) => {
+                    if (!a.date || !b.date) {
+                        return 0;
+                    }
+                    return b.date.getTime() - a.date.getTime();
+                }),
+        [pages, folder, getVisibilitySetting, pageFilter]
     );
 
-    useEffect(() => {
-        Promise.all(
-            filteredPages.map(async (page) => {
-                try {
-                    const directMDPage = (await getDirectMarkdownPage(
-                        page
-                    )) as T | null;
-                    if (!directMDPage) {
-                        return;
-                    }
-                    return {
-                        ...directMDPage,
-                        path: getNavigationPath(page),
-                    };
-                } catch {
-                    return;
-                }
-            })
-        ).then((pages) => {
-            const filteredPages = pages.filter((page) => {
-                if (
-                    !page ||
-                    !isReleasedDate(page.date) ||
-                    getVisibilitySetting(page) === ContentSetting.HIDE
-                ) {
-                    return false;
-                }
-                return pageFilter?.(page);
-            }) as PageWithPath<T>[];
-            filteredPages.sort((a, b) => {
-                if (!a.date || !b.date) {
-                    return 0;
-                }
-                return b.date.getTime() - a.date.getTime();
-            });
-            setNodes(filteredPages);
-        });
-    }, [filteredPages, pageFilter, getVisibilitySetting]);
-
-    return nodes;
+    return filteredPages;
 };
 
 export default usePages;

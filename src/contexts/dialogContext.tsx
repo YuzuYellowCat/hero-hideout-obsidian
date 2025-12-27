@@ -1,3 +1,4 @@
+"use client";
 import DialogWrapper from "components/DialogWrapper";
 import React, { createContext, useMemo, useState } from "react";
 

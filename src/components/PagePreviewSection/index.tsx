@@ -1,6 +1,7 @@
+"use client";
 import React, { useMemo } from "react";
 import "./index.css";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 
 type PagePreviewSectionProps = {
     title: string;
@@ -24,7 +25,7 @@ const PagePreviewSection: React.FC<
     color = "#fff",
     size = "L",
 }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const subtitleComponent = useMemo(() => {
         if (!subtitle) {
             return;
@@ -37,7 +38,7 @@ const PagePreviewSection: React.FC<
             style={{
                 borderColor: color,
             }}
-            onClick={() => navigate(navigationPath)}
+            onClick={() => router.push(navigationPath)}
         >
             <div className="page-preview-title">
                 <h3 className="page-preview-title-text">{title}</h3>

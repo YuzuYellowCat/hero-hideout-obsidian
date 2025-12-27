@@ -1,3 +1,4 @@
+"use client";
 import React, {
     useCallback,
     useEffect,
@@ -32,8 +33,8 @@ const ColorfulHex: React.FC = () => {
     const points: FadePoint[] = useMemo(() => [], []);
     const [context, setContext] = useState<CanvasRenderingContext2D>();
     const [canvasSize, setCanvasSize] = useState<CanvasSize>({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: 0,
+        height: 0,
     });
 
     const _colorDiffEq = useCallback(
@@ -161,18 +162,19 @@ const ColorfulHex: React.FC = () => {
     }, [draw]);
 
     useEffect(() => {
-        const resizeListener = () => {
+        const updateCanvasSize = () => {
             setCanvasSize({
                 width: window.innerWidth,
                 height: window.innerHeight,
             });
         };
 
-        window.addEventListener("resize", resizeListener);
+        window.addEventListener("resize", updateCanvasSize);
         window.addEventListener("click", onClick);
         window.addEventListener("mousemove", onMouseMove);
+        updateCanvasSize();
         return () => {
-            window.removeEventListener("resize", resizeListener);
+            window.removeEventListener("resize", updateCanvasSize);
             window.removeEventListener("click", onClick);
             window.removeEventListener("mousemove", onMouseMove);
         };

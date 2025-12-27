@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import "./index.css";
 import { DialogContext } from "contexts/dialogContext";

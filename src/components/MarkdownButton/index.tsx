@@ -1,5 +1,6 @@
+"use client";
 import React, { ButtonHTMLAttributes, useCallback } from "react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import useWebLink from "hooks/useWebLink";
 import Button from "components/Button";
 
@@ -10,19 +11,19 @@ type MarkdownButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const MarkdownButton: React.FC<MarkdownButtonProps> = (props) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { link, isLocal } = useWebLink(props.href);
 
     const onClick = useCallback(
         (event: React.MouseEvent) => {
             if (isLocal) {
                 event.preventDefault();
-                navigate(link);
+                router.push(link);
             } else {
                 window.open(link, "_blank");
             }
         },
-        [isLocal, link, navigate]
+        [isLocal, link, router]
     );
 
     return (

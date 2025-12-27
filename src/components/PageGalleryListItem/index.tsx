@@ -11,7 +11,7 @@ const PageGalleryListItem: React.FC<PageGalleryListItemProps> = ({ page }) => {
         <div className="page-graphic-list-item">
             <PagePreviewSection
                 title={page.title}
-                navigationPath={page.path}
+                navigationPath={`/${page.path}`}
                 color={page.color}
                 hasFlourish={true}
                 fullHover
