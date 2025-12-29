@@ -29,7 +29,7 @@
         "dev": "next dev --webpack",
         "build": "next build --webpack",
         "start": "npx serve@latest ./build",
-        "copyimages": "npx ts-node ./src/scripts/copy-images.mts",
+        "copyimages": "npx node ./src/scripts/copy-images.mjs",
         "prebuild": "npm run copyimages"
     },
     "browser": {
