@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    distDir: "build", // Changes the build output directory to `build`
     webpack: (config) => {
         config.module.rules.push({
             test: /\.md/,
