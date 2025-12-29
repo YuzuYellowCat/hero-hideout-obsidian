@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "../index.css";
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://yuzucat.com"),
     title: "Yuzu's Hero Hideout",
     description: "Web site created with Next.js.",
-    manifest: "%PUBLIC_URL%/manifest.json",
 };
 
 export const viewport: Viewport = {

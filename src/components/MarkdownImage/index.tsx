@@ -1,6 +1,7 @@
 "use client";
 import { DialogContext } from "contexts/dialogContext";
 import React, { ImgHTMLAttributes, useCallback, useMemo } from "react";
+import Image from "next/image";
 
 const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
     props
@@ -9,31 +10,34 @@ const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
     const imageProps = useMemo(
         () => ({
             ...props,
-            src: require(`website-content/images/${props.src}`).default.src,
+            src: `/images/${props.src}`,
+            alt: props.alt ?? "An image",
+            width: 0,
+            height: 0,
+            sizes: "100vw",
         }),
         [props]
     );
 
     const showThisAsDialog = useCallback(() => {
         showDialog(
-            <img
+            <Image
                 {...imageProps}
-                alt={imageProps.alt}
                 tabIndex={0}
                 onKeyDown={(e) => {
                     if (e.code === "Escape") {
                         clearDialog();
                     }
                 }}
+                style={{ width: "100%", height: "auto" }}
             />
         );
     }, [showDialog, clearDialog, imageProps]);
 
     return (
-        <img
+        <Image
             className="md-img"
             {...imageProps}
-            alt={imageProps.alt}
             tabIndex={0}
             onClick={showThisAsDialog}
             onKeyDown={(e) => {

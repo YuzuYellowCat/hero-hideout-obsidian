@@ -7,6 +7,7 @@ img: character-icons/mercurial.png
 ## Main Ref
 
 ![[refs/mercurial/full-front-back.jpeg|A character reference for the villain Mercurial]]
+<center>Ref drawn by me</center>
 
 Mercurial is an occult themed goat supervillain who likes to find ways to cause chaos and frustrate and dominate hero do-gooders.
 
@@ -37,5 +38,3 @@ He finds the concepts of heroes annoying and pointless, and he's out to prove it
 ## Personality
 
 He's definitely the type of villain who enjoys being over-the-top evil, and loves the power of taking down the heroes and what they represent. He's got a bit of a screw loose, and just wants to cause pain and/or humiliation to whoever he faces.
-
-Ref drawn by me!

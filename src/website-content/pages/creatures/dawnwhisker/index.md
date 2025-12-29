@@ -7,6 +7,7 @@ img: character-icons/dawnwhisker.png
 ## Main Ref
 
 ![[refs/dawnwhisker/main-ref.jpeg|A character reference for the hero DawnWhisker]]
+<center>Ref drawn by <a href="https://bsky.app/profile/imdanuki.bsky.social">imdanuki</a></center>
 
 DawnWhisker is a cheerful, over-the-top hero who tries his very best to be the coolest hero the world has ever seen!
 ## Info
@@ -30,5 +31,3 @@ He acts as a scout for the hero agency he works for. He's often using his portal
 ## Personality
 
 He is over-the-top energetic, extremely eager to be a hero and really wants to look cool despite his frequent clumsiness. This means he's easily tricked and will try to do the "cool hero" thing without fully thinking through it. Also means he's able to get really beat up and he'll keep on getting up and trying to fight back even if he's clearly outmatched.
-
-<center>Ref drawn by [imdanuki](https://bsky.app/profile/imdanuki.bsky.social)</center>

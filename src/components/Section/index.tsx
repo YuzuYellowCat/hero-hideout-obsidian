@@ -26,11 +26,7 @@ const Section: React.FC<PropsWithChildren<SectionProps>> = ({
                     <span className="title-flourish"> › › ›</span>
                 </span>
             )}
-            <Paw
-                alt="A geometric paw"
-                className="corner-paw"
-                style={{ stroke: color }}
-            />
+            <Paw className="corner-paw" style={{ stroke: color }} />
             <div className="section-content">{children}</div>
         </div>
     );

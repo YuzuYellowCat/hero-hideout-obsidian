@@ -4,7 +4,6 @@ import ReactMarkdown from "react-markdown";
 import "./index.css";
 import MarkdownImage from "components/MarkdownImage";
 import MarkdownAnchor from "components/MarkdownAnchor";
-import NotFound from "pages/NotFound";
 import ComponentInsert from "components/ComponentInsert";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -12,18 +11,21 @@ import MarkdownButton from "components/MarkdownButton";
 import ContentFilterWrapper from "components/ContentFilterWrapper";
 import MetaHandler from "components/MetaHandler";
 import { isPageReleased } from "utils/markdownClientUtils";
+import { slugToPage } from "utils/markdownServerUtils";
 
-const MarkdownPage: React.FC<{ page?: PageWithPath<GeneralPageType> }> = ({
-    page,
-}) => {
-    if (page === undefined || !isPageReleased(page)) {
-        return <NotFound />;
+const MarkdownPage: React.FC<{
+    page?: PageWithPath<GeneralPageType>;
+    pageData: Map<string, GeneralPageType>;
+}> = ({ page, pageData }) => {
+    let definedPage = page;
+    if (definedPage === undefined || !isPageReleased(definedPage)) {
+        definedPage = slugToPage(["404"], pageData);
     }
 
     return (
-        <PageWrapper color={page.color} title={page.title}>
+        <PageWrapper color={definedPage.color} title={definedPage.title}>
             <div className="markdown-page">
-                <ContentFilterWrapper page={page} size="M">
+                <ContentFilterWrapper page={definedPage} size="M">
                     <ReactMarkdown
                         components={{
                             img: MarkdownImage,
@@ -35,7 +37,7 @@ const MarkdownPage: React.FC<{ page?: PageWithPath<GeneralPageType> }> = ({
                         rehypePlugins={[rehypeRaw]}
                         skipHtml={false}
                     >
-                        {page.content}
+                        {definedPage.content}
                     </ReactMarkdown>
                 </ContentFilterWrapper>
             </div>

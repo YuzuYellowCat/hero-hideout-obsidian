@@ -36,5 +36,7 @@
     filter: blur(16px);
     -webkit-filter: blur(16px);
     overflow: hidden;
+    width: 100%;
+    height: 100%;
     z-index: 1;
 }

@@ -23,6 +23,15 @@ export const getPage = (pagePath: string) => {
     }
 };
 
+export const slugToPage = (
+    slug: string[],
+    pageData: Map<string, GeneralPageType>
+) => {
+    const path = slug?.join("/");
+    const page = pageData.get(path ?? "") ?? pageData.get("404");
+    return { ...page, path } as PageWithPath<GeneralPageType>;
+};
+
 export const webPathToMarkdownPage = (path: string) => {
     const correctlyFormattedPath = path.endsWith("/")
         ? path.slice(0, -1)

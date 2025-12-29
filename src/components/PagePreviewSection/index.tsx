@@ -33,11 +33,12 @@ const PagePreviewSection: React.FC<
         return <div className="page-preview-subtitle">{subtitle}</div>;
     }, [subtitle]);
     return (
-        <button
+        <div
             className={`page-preview preview-size-${size}`}
             style={{
                 borderColor: color,
             }}
+            tabIndex={0}
             onClick={() => router.push(navigationPath)}
         >
             <div className="page-preview-title">
@@ -62,7 +63,7 @@ const PagePreviewSection: React.FC<
                     display: fullHover ? "flex" : "none",
                 }}
             />
-        </button>
+        </div>
     );
 };
 
