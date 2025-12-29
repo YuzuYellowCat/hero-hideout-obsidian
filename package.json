@@ -28,7 +28,7 @@
         "dev": "next dev --webpack",
         "build": "next build --webpack",
         "start": "npx serve@latest ./build",
-        "copyimages": "node ./src/scripts/copy-images.mts",
+        "copyimages": "npx ts-node ./src/scripts/copy-images.mts",
         "prebuild": "npm run copyimages"
     },
     "browser": {
@@ -60,6 +60,7 @@
         "@types/webpack-env": "^1.18.8",
         "fs-extra": "^11.3.3",
         "raw-loader": "^4.0.2",
+        "ts-node": "^10.9.2",
         "typescript": "^5.9.3"
     }
 }
