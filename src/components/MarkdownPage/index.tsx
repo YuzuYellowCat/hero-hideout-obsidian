@@ -9,7 +9,6 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import MarkdownButton from "components/MarkdownButton";
 import ContentFilterWrapper from "components/ContentFilterWrapper";
-import MetaHandler from "components/MetaHandler";
 import { isPageReleased } from "utils/markdownClientUtils";
 import { slugToPage } from "utils/markdownServerUtils";
 

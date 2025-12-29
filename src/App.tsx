@@ -4,7 +4,6 @@ import ColorfulHex from "components/ColorfulHex";
 import { DialogProvider } from "contexts/dialogContext";
 import MarkdownPage from "components/MarkdownPage";
 import { PageDataProvider } from "contexts/pageDataContext";
-import MetaHandler from "components/MetaHandler";
 import { slugToPage } from "utils/markdownServerUtils";
 
 const App: React.FC<{
