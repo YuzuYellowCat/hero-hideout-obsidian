@@ -4,7 +4,6 @@ import LoadingBox from "components/LoadingBox";
 import useImageLoaded from "hooks/useImageLoaded";
 import PagePreviewSection from "components/PagePreviewSection";
 import ContentFilterWrapper from "components/ContentFilterWrapper";
-import Image from "next/image";
 
 type PageGridCardProps = {
     page: PageWithPath<ImagePageProperties>;
@@ -12,6 +11,7 @@ type PageGridCardProps = {
 };
 
 const PageGridCard: React.FC<PageGridCardProps> = ({ page, size = "L" }) => {
+    const [ref, loaded, onLoad] = useImageLoaded();
     return (
         <div className={`page-grid-card card-size-${size}`}>
             <PagePreviewSection
@@ -25,13 +25,15 @@ const PageGridCard: React.FC<PageGridCardProps> = ({ page, size = "L" }) => {
             >
                 <div className="page-thumbnail-wrapper">
                     <ContentFilterWrapper page={page} size="S">
-                        <Image
-                            src={`/images/${page.img}`}
-                            width={0}
-                            height={0}
-                            sizes="300px"
+                        {!loaded && <LoadingBox />}
+                        <img
+                            src={
+                                require(`website-content/images/${page.img}`)
+                                    .default.src
+                            }
                             alt={`A card for the page "${page.title}"`}
-                            style={{ width: "100%", height: "auto" }}
+                            ref={ref}
+                            onLoad={onLoad}
                         />
                     </ContentFilterWrapper>
                 </div>

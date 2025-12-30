@@ -27,7 +27,7 @@
     "scripts": {
         "dev": "next dev --webpack",
         "build": "next build --webpack",
-        "start": "npx serve@latest ./build",
+        "start": "npx serve@latest out",
         "copyimages": "npx node ./src/scripts/copy-images.mjs",
         "prebuild": "npm run copyimages"
     },

@@ -3,8 +3,8 @@ import "../index.css";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://yuzucat.com"),
-    title: "Yuzu's Hero Hideout",
-    description: "Web site created with Next.js.",
+    title: "Yuzu's Site!",
+    description: "Yuzu's Hero Hideout",
 };
 
 export const viewport: Viewport = {
