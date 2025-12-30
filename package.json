@@ -58,7 +58,9 @@
         "@svgr/webpack": "^8.1.0",
         "@types/webpack-env": "^1.18.8",
         "fs-extra": "^11.3.3",
+        "node-dir": "^0.1.17",
         "raw-loader": "^4.0.2",
+        "sharp": "^0.34.5",
         "typescript": "^5.9.3"
     }
 }

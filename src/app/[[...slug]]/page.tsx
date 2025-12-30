@@ -31,11 +31,12 @@ export async function generateMetadata({
     if ((page as ImagePageProperties).img) {
         const imagePage = page as ImagePageProperties;
         const pathSections = page.path.split("/").filter((x) => x);
+        const [imageName] = imagePage.img.split(".");
         optionalMetadata = {
             type: "article",
             authors: imagePage.author,
             images: {
-                url: `/images/${imagePage.img}`,
+                url: `/images/full-optimized/${imageName}.webp`,
                 alt: `Cover image for ${imagePage.title}`,
             },
             ...(imagePage.date

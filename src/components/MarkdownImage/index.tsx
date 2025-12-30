@@ -6,10 +6,14 @@ const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
     props
 ) => {
     const { showDialog, clearDialog } = React.useContext(DialogContext);
+    const [imageName] = props.src ? props.src.split(".") : [""];
+    if (!imageName) {
+        return <></>;
+    }
+
     const imageProps = useMemo(
         () => ({
             ...props,
-            src: `/images/${props.src}`,
             alt: props.alt ?? "An image",
         }),
         [props]
@@ -20,6 +24,7 @@ const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
             <img
                 {...imageProps}
                 tabIndex={0}
+                src={`/images/full/${imageName}.webp`}
                 onKeyDown={(e) => {
                     if (e.code === "Escape") {
                         clearDialog();
@@ -33,6 +38,7 @@ const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
         <img
             className="md-img"
             {...imageProps}
+            src={`/images/full-optimized/${imageName}.webp`}
             tabIndex={0}
             onClick={showThisAsDialog}
             onKeyDown={(e) => {

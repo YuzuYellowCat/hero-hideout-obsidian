@@ -12,6 +12,7 @@ type PageGridCardProps = {
 
 const PageGridCard: React.FC<PageGridCardProps> = ({ page, size = "L" }) => {
     const [ref, loaded, onLoad] = useImageLoaded();
+    const [imageName] = page.img.split(".");
     return (
         <div className={`page-grid-card card-size-${size}`}>
             <PagePreviewSection
@@ -27,10 +28,7 @@ const PageGridCard: React.FC<PageGridCardProps> = ({ page, size = "L" }) => {
                     <ContentFilterWrapper page={page} size="S">
                         {!loaded && <LoadingBox />}
                         <img
-                            src={
-                                require(`website-content/images/${page.img}`)
-                                    .default.src
-                            }
+                            src={`/images/thumbnail/${imageName}.webp`}
                             alt={`A card for the page "${page.title}"`}
                             ref={ref}
                             onLoad={onLoad}
