@@ -38,7 +38,9 @@ const runImageProcessing = async (directory, callback) => {
             return;
         }
 
-        const mySharp = sharp(imagePath, { animated: extension === "gif" });
+        const mySharp = sharp(imagePath, {
+            animated: extension === "gif",
+        }).rotate();
         callback(mySharp).toFile(`${directory}${fileName}.webp`);
 
         // sharp(imagePath, { animated: extension === "gif" })
