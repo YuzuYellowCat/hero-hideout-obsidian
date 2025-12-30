@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
     output: "export",
+    images: {
+        unoptimized: true,
+    },
     webpack: (config) => {
         config.module.rules.push({
             test: /\.md/,
@@ -32,8 +35,6 @@ const nextConfig: NextConfig = {
 
         // Modify the file loader rule to ignore *.svg, since we have it handled now.
         fileLoaderRule.exclude = /\.svg$/i;
-
-        config.cache = false;
 
         return config;
     },

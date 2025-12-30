@@ -51,7 +51,7 @@ export async function generateMetadata({
         title: page.title,
         openGraph: {
             type: "website",
-            url: `https://yuzucat.com${page.path}`,
+            url: `https://yuzucat.com/${page.path}`,
             siteName: "yuzucat.com",
             title: page.title,
             ...optionalMetadata,
