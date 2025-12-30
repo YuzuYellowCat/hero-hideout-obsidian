@@ -24,7 +24,7 @@ const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
             <img
                 {...imageProps}
                 tabIndex={0}
-                src={`/images/full/${imageName}.webp`}
+                src={`/images/full-optimized/${imageName}.webp`}
                 onKeyDown={(e) => {
                     if (e.code === "Escape") {
                         clearDialog();
