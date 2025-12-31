@@ -10,15 +10,16 @@ import Button from "components/Button";
 type ContentFilterWrapperProps = {
     page: PageWithPath<MarkdownPageProperties>;
     size: "S" | "M";
+    loaded?: boolean;
 };
 
 const ContentFilterWrapper: React.FC<
     React.PropsWithChildren<ContentFilterWrapperProps>
-> = ({ children, page, size }) => {
+> = ({ children, page, size, loaded = true }) => {
     const { getVisibilitySetting, setVisibilityOverride } =
         useContext(ContentLevelContext);
     // Don't do anything if the setting for the current level isn't "WARN"
-    if (getVisibilitySetting(page) !== ContentSetting.WARN) {
+    if (getVisibilitySetting(page) !== ContentSetting.WARN || !loaded) {
         return <>{children}</>;
     }
 

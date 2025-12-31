@@ -5,24 +5,29 @@ import {
 } from "contexts/contentLevelContext";
 import { useContext, useMemo } from "react";
 import usePageData from "./usePageData";
+import { useSearchParams } from "next/navigation";
 import { isPageReleased } from "utils/markdownClientUtils";
 
-export type PageComponentProps = {
-    folder: string;
+export type PageComponentOptions = {
+    folder?: string;
+    tags?: string[];
 };
 
 const usePages = <T extends MarkdownPageProperties>(
-    folder: string,
+    options: PageComponentOptions,
     pageFilter: (page: PageWithPath<T>) => boolean = () => true
 ) => {
     const { getVisibilitySetting } = useContext(ContentLevelContext);
     const pages = usePageData();
+    const searchParams = useSearchParams();
     const filteredPages = useMemo(
         () =>
             pages
                 .keys()
                 .toArray()
-                .filter((path) => path.startsWith(folder))
+                .filter((path) =>
+                    options.folder ? path.startsWith(options.folder) : true
+                )
                 .map(
                     (path) =>
                         ({
@@ -31,10 +36,16 @@ const usePages = <T extends MarkdownPageProperties>(
                         } as PageWithPath<T>)
                 )
                 .filter((page) => {
+                    const tags =
+                        searchParams.get("tags")?.split(",") ?? options.tags;
                     if (
                         !page ||
                         !isPageReleased(page) ||
-                        getVisibilitySetting(page) === ContentSetting.HIDE
+                        getVisibilitySetting(page) === ContentSetting.HIDE ||
+                        (tags &&
+                            !tags.every(
+                                (tag) => page.tags && page.tags.includes(tag)
+                            ))
                     ) {
                         return false;
                     }
@@ -46,7 +57,7 @@ const usePages = <T extends MarkdownPageProperties>(
                     }
                     return b.date.getTime() - a.date.getTime();
                 }),
-        [pages, folder, getVisibilitySetting, pageFilter]
+        [pages, options, getVisibilitySetting, pageFilter]
     );
 
     return filteredPages;

@@ -3,6 +3,8 @@ title: Light Pose
 color: rgb(195, 196, 255)
 img: fursuit-pics/2025-BLFC_lightpose.jpg
 date: 2025-10-17T11:23:00
+tags:
+  - oc-dawnwhisker
 ---
 ![[fursuit-pics/2025-BLFC_lightpose.jpg|A yellow cat in a blue superhero spandex suit and mask poses in front of a bunch of lights holding up a peace sign. He wears black shoulder pads, gloves, and belt with pouches. He also wears a white scarf and con badges for BLFC.]]
 

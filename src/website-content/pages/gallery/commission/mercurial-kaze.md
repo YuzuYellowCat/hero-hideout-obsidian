@@ -4,6 +4,8 @@ color: rgb(229, 106, 158)
 img: commissions/2025-11-10_kaze.png
 author: Kaze
 date: 2025-11-10T23:01:00
+tags:
+  - oc-mercurial
 ---
 ![[commissions/2025-11-10_kaze.png|An illustration of an evil black goat illuminated by red light grinning as he is surrounded by light-based crystals.]]
 

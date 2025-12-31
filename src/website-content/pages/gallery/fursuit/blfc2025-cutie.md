@@ -3,6 +3,8 @@ title: Cutie Pattotie
 color: rgb(113, 108, 103)
 img: fursuit-pics/2025-BLFC_cutie.jpg
 date: 2025-12-05T14:17:00
+tags:
+  - oc-dawnwhisker
 ---
 ![[fursuit-pics/2025-BLFC_cutie.jpg|A yellow feline fursuiter in a blue superhero spandex suit with both hands below his head. He looks at the camera, making a cute pose. He wears black boots, kneepads, gloves, shoulder pads, and a white scarf.]]
 

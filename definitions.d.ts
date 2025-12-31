@@ -9,6 +9,7 @@ type MarkdownPageProperties = {
     title: string;
     date?: Date;
     level: ContentLevel;
+    tags?: string[];
 };
 
 type GalleryPageUniqueProperties = {

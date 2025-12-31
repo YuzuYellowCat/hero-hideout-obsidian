@@ -4,6 +4,8 @@ color: rgb(159, 118, 198)
 img: commissions/2025-12-14_yuzupool.png
 author: yuzupool
 date: 2025-12-14T20:45:00
+tags:
+  - oc-dawnwhisker
 ---
 ![[commissions/2025-12-14_yuzupool.png|DawnWhisker leaping through a circuit-laden setting with a VHS filter to thrust an antivirus USB into the evil program's core, fighting off attacks joyously.]]
 

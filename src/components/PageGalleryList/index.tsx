@@ -2,14 +2,14 @@
 import PageGalleryListItem from "components/PageGalleryListItem";
 import React, { useCallback } from "react";
 import "./index.css";
-import usePages, { PageComponentProps } from "hooks/usePages";
+import usePages, { PageComponentOptions } from "hooks/usePages";
 
-const PageGraphicList: React.FC<PageComponentProps> = ({ folder }) => {
+const PageGraphicList: React.FC<PageComponentOptions> = (props) => {
     const pageFilter = useCallback((page: GalleryPageProperties) => {
         return page.isGallery === "true";
     }, []);
 
-    const pages = usePages<GalleryPageProperties>(folder, pageFilter);
+    const pages = usePages<GalleryPageProperties>(props, pageFilter);
 
     return (
         <div className="page-graphic-list">

@@ -12,20 +12,22 @@ ___
 * [x] Add button component
 * [x] Add posts for gallery
 * [x] Replace currently deployed with this one
-* [ ] Performance testing for worse connections
-	* [ ] Set up grid with virtualizer as a result?
+* [x] Performance testing for worse connections
+	* [x] Set up grid with virtualizer as a result?
 * [x] Disable route to page until it's past current datetime
 * [x] Sort posts by datetime
-* [ ] Add tags
-* [ ] Add "search by tag" option from the url
+* [x] Add tags
+* [x] Add "search by tag" option from the url
 * [ ] Add tag ui
 * [ ] content visibility settings
+* [ ] prevent click on blurred hidden img
 * [x] optional -- set up rerouting to the standard page from ref page
 * [ ] Cron job for bluesky posting (github actions?)
-* [ ] Add embed previews for images on the page
-	* [ ]  https://prerender.io/ ?
+* [x] Add embed previews for images on the page
+	* [x]  https://prerender.io/ ?
 * [x] Clickable images
-* [ ] Move 404 to metadata page
+* [x] Move 404 to metadata page
+
 
 Easter Eggs / Fun Stuff:
 * [ ] different cursor effect based on different content view settings

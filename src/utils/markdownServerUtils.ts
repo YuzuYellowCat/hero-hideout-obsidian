@@ -32,20 +32,6 @@ export const slugToPage = (
     return { ...page, path } as PageWithPath<GeneralPageType>;
 };
 
-export const webPathToMarkdownPage = (path: string) => {
-    const correctlyFormattedPath = path.endsWith("/")
-        ? path.slice(0, -1)
-        : path;
-
-    let textContent = getPage(`${correctlyFormattedPath}/index.md`);
-
-    if (!textContent) {
-        textContent = getPage(`${correctlyFormattedPath}.md`);
-    }
-
-    return _parseMarkdownText(textContent);
-};
-
 export const getNavigationPath = (filePath: string, cutFront = false) => {
     let navPath = filePath;
     navPath = navPath.endsWith("/index.md")
@@ -69,7 +55,7 @@ const _parseMarkdownText = (textContent: string | void) => {
         return;
     }
 
-    const pageNode = rawMarkdownTransform(textContent);
+    const pageNode = _rawMarkdownTransform(textContent);
     return pageNode;
 };
 
@@ -79,17 +65,33 @@ const DEFAULT_PROPERTIES = {
     level: "SFW",
 };
 
-export const rawMarkdownTransform = (raw: string) => {
+const _rawMarkdownTransform = (raw: string) => {
     let content = raw.replace(/---\n[\S\s]+?---/, "");
     const propertiesString = raw.replace(content, "");
     content = content.replaceAll(/\[\[(.*)\|(.*)]\]/g, "[$2]($1)");
     let properties: { [key: string]: any } = {};
+    let prevPropertyName: string | undefined;
     propertiesString.split("\n").forEach((property) => {
         if (property === "---") {
             return undefined;
         }
-        const [name, value] = property.split(": ");
-        properties[name] = value?.replaceAll('"', "");
+        if (property.includes(": ")) {
+            prevPropertyName = undefined;
+            const [name, value] = property.split(": ");
+            properties[name] = value.replaceAll('"', "");
+        } else if (property.endsWith(":")) {
+            prevPropertyName = property.slice(0, -1);
+        } else if (property.includes("- ") && prevPropertyName) {
+            const listItem = property.trimStart().replace("- ", "");
+            if (Array.isArray(properties[prevPropertyName])) {
+                properties[prevPropertyName] = [
+                    ...properties[prevPropertyName],
+                    listItem,
+                ];
+            } else {
+                properties[prevPropertyName] = [listItem];
+            }
+        }
     });
     if (properties.date) {
         properties.date = new Date(properties.date);

@@ -25,7 +25,7 @@ const PageGridCard: React.FC<PageGridCardProps> = ({ page, size = "L" }) => {
                 subtitle={page.author ? `by ${page.author}` : ""}
             >
                 <div className="page-thumbnail-wrapper">
-                    <ContentFilterWrapper page={page} size="S">
+                    <ContentFilterWrapper page={page} size="S" loaded={loaded}>
                         {!loaded && <LoadingBox />}
                         <img
                             src={`/images/thumbnail/${imageName}.webp`}

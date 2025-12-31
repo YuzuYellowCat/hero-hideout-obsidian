@@ -41,3 +41,9 @@ h6 {
 .markdown-page br {
     margin: 8px;
 }
+
+.markdown-page center {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}

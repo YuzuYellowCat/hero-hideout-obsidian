@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import "./index.css";
 import { useRouter } from "next/navigation";
 
@@ -32,6 +32,10 @@ const PagePreviewSection: React.FC<
         }
         return <div className="page-preview-subtitle">{subtitle}</div>;
     }, [subtitle]);
+
+    const onPreviewSelect = useCallback(() => {
+        router.push(navigationPath);
+    }, [navigationPath]);
     return (
         <div
             className={`page-preview preview-size-${size}`}
@@ -39,7 +43,12 @@ const PagePreviewSection: React.FC<
                 borderColor: color,
             }}
             tabIndex={0}
-            onClick={() => router.push(navigationPath)}
+            onClick={onPreviewSelect}
+            onKeyDown={(e) => {
+                if (e.code === "Enter") {
+                    onPreviewSelect();
+                }
+            }}
         >
             <div className="page-preview-title">
                 <h3 className="page-preview-title-text">{title}</h3>

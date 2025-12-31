@@ -2,19 +2,19 @@
 import PageGridCard from "components/PageGridCard";
 import React, { useCallback } from "react";
 import "./index.css";
-import usePages, { PageComponentProps } from "hooks/usePages";
+import usePages, { PageComponentOptions } from "hooks/usePages";
 
-type PageGridProps = PageComponentProps & {
+type PageGridProps = PageComponentOptions & {
     size?: "S" | "L";
 };
 
-const PageGrid: React.FC<PageGridProps> = ({ size, folder }) => {
+const PageGrid: React.FC<PageGridProps> = (props) => {
     const pageFilter = useCallback((page: ImagePageProperties) => {
         return !!page.img;
     }, []);
 
-    const pages = usePages<ImagePageProperties>(folder, pageFilter);
-    const gridSize = size ?? "L";
+    const pages = usePages<ImagePageProperties>(props, pageFilter);
+    const gridSize = props.size ?? "L";
 
     return (
         <div className={`page-grid size-${gridSize}`}>

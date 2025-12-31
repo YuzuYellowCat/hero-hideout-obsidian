@@ -3,6 +3,9 @@ title: HiroGato Shading Practice
 color: rgb(193, 193, 193)
 img: my-art/2025_hirogato-shading-practice.jpeg
 date: 2025-09-24T07:26:00
+isSuggestive: true
+tags:
+  - oc-dawnwhisker
 ---
 ![[my-art/2025_hirogato-shading-practice.jpeg|A drawing of a yellow cat in a teal spandex suit wearing black gloves and a belt. He is posing with his butt facing the camera, looking over his shoulder.]]
 
