@@ -2,6 +2,9 @@
 color: "#FFE76B"
 title: Yuzu
 img: character-icons/yuzu.png
+tags:
+  - character-page
+  - oc-yuzu
 ---
 ---
 ## Main Ref
@@ -9,7 +12,7 @@ img: character-icons/yuzu.png
 ![[refs/yuzu/main-ref.png|A reference for the yellow cat Yuzu]]
 <center>Ref drawn by <a href="https://bsky.app/profile/jungabeast.bsky.social">JungaBeast</a></center>
 <br>
-<center><button href="pages/gallery/all?tags=oc-yuzu">View All</button><button href="pages/gallery/art?tags=oc-yuzu">View Art</button><button href="pages/gallery/commission?tags=oc-yuzu">View Comms</button></center>
+<center><button href="pages/search?tags=oc-yuzu">View All</button><button href="pages/gallery/art?tags=oc-yuzu">View Art</button><button href="pages/gallery/commission?tags=oc-yuzu">View Comms</button></center>
 
 ## Info
 

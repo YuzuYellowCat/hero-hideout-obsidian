@@ -1,11 +1,10 @@
 {
-  "types": {
-    "aliases": "aliases",
-    "cssclasses": "multitext",
-    "tags": "tags",
-    "isGallery": "checkbox",
-    "date": "datetime",
-    "isNSFW": "checkbox",
-    "isSuggestive": "checkbox"
-  }
+    "types": {
+        "aliases": "aliases",
+        "cssclasses": "multitext",
+        "tags": "tags",
+        "date": "datetime",
+        "isNSFW": "checkbox",
+        "isSuggestive": "checkbox"
+    }
 }

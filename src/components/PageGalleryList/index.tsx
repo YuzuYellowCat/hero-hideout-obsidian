@@ -5,11 +5,7 @@ import "./index.css";
 import usePages, { PageComponentOptions } from "hooks/usePages";
 
 const PageGraphicList: React.FC<PageComponentOptions> = (props) => {
-    const pageFilter = useCallback((page: GalleryPageProperties) => {
-        return page.isGallery === "true";
-    }, []);
-
-    const pages = usePages<GalleryPageProperties>(props, pageFilter);
+    const pages = usePages<GalleryPageProperties>(props);
 
     return (
         <div className="page-graphic-list">

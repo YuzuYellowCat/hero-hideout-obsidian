@@ -1,6 +1,8 @@
 ---
 title: Fursuit Pics
 color: "#ffbe26"
-isGallery: true
+tags:
+  - gallery-page
 ---
+
 <div data-component-id="PageGrid" data-props='{"folder": "gallery/fursuit", "size": "S"}'></div>

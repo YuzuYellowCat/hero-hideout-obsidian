@@ -1,6 +1,9 @@
 ---
 title: Jade Ranger L
 color: rgb(117, 251, 90)
+img: in-content/JRL.jpg
+tags:
+  - hidden
 ---
 Get owned nerd
 

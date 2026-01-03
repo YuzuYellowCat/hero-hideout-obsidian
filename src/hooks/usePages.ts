@@ -42,8 +42,9 @@ const usePages = <T extends MarkdownPageProperties>(
                         !page ||
                         !isPageReleased(page) ||
                         getVisibilitySetting(page) === ContentSetting.HIDE ||
+                        page.tags?.includes("hidden") ||
                         (tags &&
-                            !tags.every(
+                            !tags?.every(
                                 (tag) => page.tags && page.tags.includes(tag)
                             ))
                     ) {

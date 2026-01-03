@@ -47,3 +47,10 @@ h6 {
     justify-content: center;
     gap: 8px;
 }
+
+.page-footer {
+    border-top: 2px solid #222;
+    background-color: #111;
+    margin: 16px -16px -16px -16px;
+    padding: 0 16px 16px 16px;
+}

@@ -11,6 +11,8 @@ import MarkdownButton from "components/MarkdownButton";
 import ContentFilterWrapper from "components/ContentFilterWrapper";
 import { isPageReleased } from "utils/markdownClientUtils";
 import { slugToPage } from "utils/markdownServerUtils";
+import TagDisplay from "components/TagDisplay";
+import DateDisplay from "components/DateDisplay";
 
 const MarkdownPage: React.FC<{
     page?: PageWithPath<GeneralPageType>;
@@ -39,6 +41,10 @@ const MarkdownPage: React.FC<{
                         {definedPage.content}
                     </ReactMarkdown>
                 </ContentFilterWrapper>
+            </div>
+            <div className="page-footer">
+                <TagDisplay tags={definedPage.tags} />
+                <DateDisplay date={definedPage.date} />
             </div>
         </PageWrapper>
     );

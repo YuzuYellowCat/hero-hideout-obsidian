@@ -2,6 +2,9 @@
 color: "#1B86A7"
 title: DawnWhisker
 img: character-icons/dawnwhisker.png
+tags:
+  - character-page
+  - oc-dawnwhisker
 ---
 ---
 ## Main Ref
@@ -9,7 +12,7 @@ img: character-icons/dawnwhisker.png
 ![[refs/dawnwhisker/main-ref.jpeg|A character reference for the hero DawnWhisker]]
 <center>Ref drawn by <a href="https://bsky.app/profile/imdanuki.bsky.social">imdanuki</a></center>
 <br>
-<center><button href="pages/gallery/all?tags=oc-dawnwhisker">View All</button><button href="pages/gallery/fursuit?tags=oc-dawnwhisker">View Fursuit</button><button href="pages/gallery/art?tags=oc-dawnwhisker">View Art</button><button href="pages/gallery/commission?tags=oc-dawnwhisker">View Comms</button></center>
+<center><button href="pages/search?tags=oc-dawnwhisker">View All</button><button href="pages/gallery/fursuit?tags=oc-dawnwhisker">View Fursuit</button><button href="pages/gallery/art?tags=oc-dawnwhisker">View Art</button><button href="pages/gallery/commission?tags=oc-dawnwhisker">View Comms</button></center>
 
 DawnWhisker is a cheerful, over-the-top hero who tries his very best to be the coolest hero the world has ever seen!
 ## Info

@@ -18,7 +18,6 @@ ___
 * [x] Sort posts by datetime
 * [x] Add tags
 * [x] Add "search by tag" option from the url
-* [ ] Add tag ui
 * [x] content visibility settings
 * [x] prevent click on blurred hidden img
 * [x] optional -- set up rerouting to the standard page from ref page
@@ -27,7 +26,9 @@ ___
 	* [x]  https://prerender.io/ ?
 * [x] Clickable images
 * [x] Move 404 to metadata page
-* [ ] rework gallery to use filter tags instead of isGallery checkbox
+* [x] Rework gallery to use filter tags instead of isGallery checkbox
+* [x] Add date to the bottom of the page when it exists
+* [x] Add tags to the bottom of a page where they exist
 
 
 Easter Eggs / Fun Stuff:

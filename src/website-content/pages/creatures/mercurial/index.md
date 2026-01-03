@@ -2,6 +2,9 @@
 color: "#BA0203"
 title: Mercurial
 img: character-icons/mercurial.png
+tags:
+  - character-page
+  - oc-mercurial
 ---
 ---
 ## Main Ref
@@ -9,7 +12,7 @@ img: character-icons/mercurial.png
 ![[refs/mercurial/full-front-back.jpeg|A character reference for the villain Mercurial]]
 <center>Ref drawn by me</center>
 <br>
-<center><button href="pages/gallery/all?tags=oc-mercurial">View All</button><button href="pages/gallery/art?tags=oc-mercurial">View Art</button><button href="pages/gallery/commission?tags=oc-mercurial">View Comms</button></center>
+<center><button href="pages/search?tags=oc-mercurial">View All</button><button href="pages/gallery/art?tags=oc-mercurial">View Art</button><button href="pages/gallery/commission?tags=oc-mercurial">View Comms</button></center>
 
 Mercurial is an occult themed goat supervillain who likes to find ways to cause chaos and frustrate and dominate hero do-gooders.
 

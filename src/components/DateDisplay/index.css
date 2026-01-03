@@ -1,0 +1,7 @@
+.date-display {
+    display: flex;
+    font-family: "Chakra Petch", sans-serif;
+    justify-content: start;
+    margin: 0 16px;
+    color: #777;
+}
