@@ -19,7 +19,7 @@ const ContentFilterWrapper: React.FC<
     const { getVisibilitySetting, setVisibilityOverride } =
         useContext(ContentLevelContext);
     // Don't do anything if the setting for the current level isn't "WARN"
-    if (getVisibilitySetting(page) !== ContentSetting.WARN || !loaded) {
+    if (getVisibilitySetting() !== ContentSetting.WARN || !loaded) {
         return <>{children}</>;
     }
 
@@ -33,7 +33,7 @@ const ContentFilterWrapper: React.FC<
                     className="content-filter-show"
                     onClick={(e) => {
                         e.stopPropagation();
-                        setVisibilityOverride(page, ContentSetting.SHOW);
+                        setVisibilityOverride(ContentSetting.SHOW, page);
                     }}
                     size={size}
                 >

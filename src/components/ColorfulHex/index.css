@@ -1,5 +1,5 @@
 .hex {
     mask-image: url(../../images/tiles.svg);
-    background: radial-gradient(#1e1e1e, #000);
+    background: radial-gradient(hsl(0, 0%, 12%), #000);
     overscroll-behavior: contain;
 }

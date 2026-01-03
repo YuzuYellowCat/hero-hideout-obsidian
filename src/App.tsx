@@ -1,5 +1,4 @@
 import { ContentLevelProvider } from "contexts/contentLevelContext";
-import "./App.css";
 import ColorfulHex from "components/ColorfulHex";
 import { DialogProvider } from "contexts/dialogContext";
 import MarkdownPage from "components/MarkdownPage";
@@ -13,7 +12,7 @@ const App: React.FC<{
     const pageWithPath = slugToPage(slug ?? [], pageData);
     return (
         <PageDataProvider pageData={pageData}>
-            <ContentLevelProvider>
+            <ContentLevelProvider page={pageWithPath}>
                 <DialogProvider>
                     <div className="site">
                         <MarkdownPage page={pageWithPath} pageData={pageData} />

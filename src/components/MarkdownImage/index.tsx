@@ -1,11 +1,23 @@
 "use client";
+import {
+    ContentLevelContext,
+    ContentSetting,
+} from "contexts/contentLevelContext";
 import { DialogContext } from "contexts/dialogContext";
-import React, { ImgHTMLAttributes, useCallback, useMemo } from "react";
+import usePageData from "hooks/usePageData";
+import React, {
+    ImgHTMLAttributes,
+    useCallback,
+    useContext,
+    useMemo,
+} from "react";
 
 const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
     props
 ) => {
     const { showDialog, clearDialog } = React.useContext(DialogContext);
+    const pageData = usePageData();
+    const { getVisibilitySetting } = useContext(ContentLevelContext);
     const [imageName] = props.src ? props.src.split(".") : [""];
     if (!imageName) {
         return <></>;
@@ -20,6 +32,8 @@ const MarkdownImage: React.FC<ImgHTMLAttributes<HTMLImageElement>> = (
     );
 
     const showThisAsDialog = useCallback(() => {
+        if (getVisibilitySetting() !== ContentSetting.SHOW) {
+        }
         showDialog(
             <img
                 {...imageProps}

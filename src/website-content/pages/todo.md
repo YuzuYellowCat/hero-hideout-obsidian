@@ -27,6 +27,7 @@ ___
 	* [x]  https://prerender.io/ ?
 * [x] Clickable images
 * [x] Move 404 to metadata page
+* [ ] rework gallery to use filter tags instead of isGallery checkbox
 
 
 Easter Eggs / Fun Stuff:

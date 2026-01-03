@@ -23,11 +23,11 @@ const DEFAULT_CONTENT_LEVEL: ContentLevelRecordType = {
 
 type ContentLevelContextType = {
     getVisibilitySetting: (
-        page: PageWithPath<MarkdownPageProperties>
+        pageOverride?: PageWithPath<MarkdownPageProperties>
     ) => ContentSetting;
     setVisibilityOverride: (
-        page: PageWithPath<MarkdownPageProperties>,
-        value: ContentSetting
+        value: ContentSetting,
+        pageOverride?: PageWithPath<MarkdownPageProperties>
     ) => void;
     updateSetting: (level: ContentLevel, value: ContentSetting) => void;
 };
@@ -44,9 +44,9 @@ export const ContentLevelContext = createContext<ContentLevelContextType>({
     },
 });
 
-export const ContentLevelProvider: React.FC<React.PropsWithChildren> = ({
-    children,
-}) => {
+export const ContentLevelProvider: React.FC<
+    React.PropsWithChildren<{ page: PageWithPath<MarkdownPageProperties> }>
+> = ({ children, page }) => {
     const [contentLevel, setContentLevel] = useState<ContentLevelRecordType>(
         DEFAULT_CONTENT_LEVEL
     );
@@ -57,19 +57,21 @@ export const ContentLevelProvider: React.FC<React.PropsWithChildren> = ({
     const contentLevelInterface = useMemo(
         () => ({
             getVisibilitySetting: (
-                page: PageWithPath<MarkdownPageProperties>
+                pageOverride?: PageWithPath<MarkdownPageProperties>
             ) => {
                 return (
-                    pageViewOverrides.get(page.path) ??
-                    contentLevel[page.level as ContentLevel]
+                    pageViewOverrides.get(pageOverride?.path ?? page.path) ??
+                    contentLevel[
+                        (pageOverride?.path ?? page.level) as ContentLevel
+                    ]
                 );
             },
             setVisibilityOverride: (
-                page: PageWithPath<MarkdownPageProperties>,
-                value: ContentSetting
+                value: ContentSetting,
+                pageOverride?: PageWithPath<MarkdownPageProperties>
             ) => {
                 const newMap = new Map(pageViewOverrides);
-                newMap.set(page.path, value);
+                newMap.set(pageOverride?.path ?? page.path, value);
                 setPageViewOverrides(newMap);
             },
             updateSetting: (level: ContentLevel, value: ContentSetting) => {
