@@ -32,11 +32,10 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
           };
     return (
         <button
-            className={classNames("button", {
+            className={classNames("button", className, {
                 [`button-${variant}`]: true,
                 [`button-size-${size}`]: true,
                 "button-quiet": quiet,
-                className,
             })}
             style={buttonColorStyle}
             onClick={onClick}

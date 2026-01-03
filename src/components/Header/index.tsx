@@ -1,9 +1,12 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import "./index.css";
 import Section from "components/Section";
 import TitleStripe from "components/TitleStripe";
 import { useRouter, usePathname } from "next/navigation";
+import Button from "components/Button";
+import { DialogContext } from "contexts/dialogContext";
+import ContentSettingsDialog from "components/ContentSettingsDialog";
 
 type HeaderProps = {
     borderColor: string;
@@ -12,6 +15,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ borderColor }) => {
     const router = useRouter();
     const pathName = usePathname();
+    const { showDialog } = useContext(DialogContext);
 
     const pages = require.context("website-content/pages");
     const test = pages
@@ -45,6 +49,15 @@ const Header: React.FC<HeaderProps> = ({ borderColor }) => {
 
     return (
         <Section color={borderColor}>
+            <Button
+                quiet
+                className="content-settings-button"
+                size="S"
+                color="#aaa"
+                onClick={() => showDialog(<ContentSettingsDialog />)}
+            >
+                Content Settings
+            </Button>
             <TitleStripe>YuzuCat</TitleStripe>
             <div className="links">{links}</div>
         </Section>

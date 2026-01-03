@@ -1,0 +1,49 @@
+.base-dialog {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    background-color: #222;
+    border-radius: 8px;
+    min-width: 50%;
+    border: 0px;
+    color: white;
+}
+
+.base-dialog * {
+    color: white;
+}
+
+.dialog-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dialog-x-wrapper {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dialog-x {
+    width: 18px;
+    height: 18px;
+    fill: #aaa;
+}
+
+.dialog-title {
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.dialog-divider {
+    height: 2px;
+    background-color: #333;
+    margin: 8px 0;
+}

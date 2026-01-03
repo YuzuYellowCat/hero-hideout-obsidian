@@ -6,7 +6,7 @@
     /* 48 for page border, + 32 for section padding + 2 for border = 82px */
     width: calc(100vw - 82px);
     height: fit-content;
-    max-width: 800px;
+    max-width: 900px;
     color: #fffb;
     padding: 16px;
     border-width: 1px;

@@ -1,11 +1,18 @@
 "use client";
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 
 export enum ContentLevel {
     SFW = "SFW",
     SUGGESTIVE = "suggestive",
     NSFW = "NSFW",
 }
+
+export const CONTENT_LEVEL_COLOR_MAP: Record<ContentLevel, string> =
+    Object.freeze({
+        [ContentLevel.SFW]: "#0d0",
+        [ContentLevel.SUGGESTIVE]: "#dd0",
+        [ContentLevel.NSFW]: "#d00",
+    });
 
 export enum ContentSetting {
     SHOW = "show",
@@ -18,7 +25,7 @@ type ContentLevelRecordType = Record<ContentLevel, ContentSetting>;
 const DEFAULT_CONTENT_LEVEL: ContentLevelRecordType = {
     [ContentLevel.SFW]: ContentSetting.SHOW,
     [ContentLevel.SUGGESTIVE]: ContentSetting.WARN,
-    [ContentLevel.NSFW]: ContentSetting.WARN,
+    [ContentLevel.NSFW]: ContentSetting.HIDE,
 };
 
 type ContentLevelContextType = {
@@ -29,19 +36,23 @@ type ContentLevelContextType = {
         value: ContentSetting,
         pageOverride?: PageWithPath<MarkdownPageProperties>
     ) => void;
+    getGlobalSetting: (level: ContentLevel) => ContentSetting;
     updateSetting: (level: ContentLevel, value: ContentSetting) => void;
 };
 
+const _notInitialized = () => {
+    throw new Error("Content Level Context Not Initialized");
+};
+
+const _getLocalStorageKey = (level: ContentLevel) => {
+    return `contentLevelSetting_${level}`;
+};
+
 export const ContentLevelContext = createContext<ContentLevelContextType>({
-    getVisibilitySetting: () => {
-        throw new Error("Content Level Context Not Initialized");
-    },
-    setVisibilityOverride: () => {
-        throw new Error("Content Level Context Not Initialized");
-    },
-    updateSetting: () => {
-        throw new Error("Content Level Context Not Initialized");
-    },
+    getVisibilitySetting: _notInitialized,
+    setVisibilityOverride: _notInitialized,
+    getGlobalSetting: _notInitialized,
+    updateSetting: _notInitialized,
 });
 
 export const ContentLevelProvider: React.FC<
@@ -53,6 +64,33 @@ export const ContentLevelProvider: React.FC<
     const [pageViewOverrides, setPageViewOverrides] = useState<
         Map<string, ContentSetting>
     >(new Map());
+
+    useEffect(() => {
+        Object.values(ContentLevel).forEach((level) => {
+            const localStorageValue = localStorage.getItem(
+                _getLocalStorageKey(level)
+            );
+            console.log(
+                localStorageValue,
+                _getLocalStorageKey(level),
+                Object.values(ContentSetting).some(
+                    (setting) => setting.toString() === localStorageValue
+                )
+            );
+            if (
+                localStorageValue &&
+                Object.values(ContentSetting).some(
+                    (setting) => setting.toString() === localStorageValue
+                )
+            ) {
+                console.log("gets here");
+                setContentLevel((old) => ({
+                    ...old,
+                    [level]: localStorageValue,
+                }));
+            }
+        });
+    }, []);
 
     const contentLevelInterface = useMemo(
         () => ({
@@ -74,11 +112,16 @@ export const ContentLevelProvider: React.FC<
                 newMap.set(pageOverride?.path ?? page.path, value);
                 setPageViewOverrides(newMap);
             },
+            getGlobalSetting: (level: ContentLevel) => {
+                return contentLevel[level];
+            },
             updateSetting: (level: ContentLevel, value: ContentSetting) => {
-                setContentLevel({
-                    ...contentLevel,
+                console.log(localStorage, _getLocalStorageKey(level));
+                localStorage.setItem(_getLocalStorageKey(level), value);
+                setContentLevel((old) => ({
+                    ...old,
                     [level]: value,
-                });
+                }));
             },
         }),
         [contentLevel, pageViewOverrides]

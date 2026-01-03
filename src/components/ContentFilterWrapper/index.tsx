@@ -1,5 +1,7 @@
 "use client";
 import {
+    CONTENT_LEVEL_COLOR_MAP,
+    ContentLevel,
     ContentLevelContext,
     ContentSetting,
 } from "contexts/contentLevelContext";
@@ -28,7 +30,17 @@ const ContentFilterWrapper: React.FC<
         <div className={`content-filter-wrapper content-filter-size-${size}`}>
             <div className="content-filter-overlay">
                 <span className="content-filter-text">
-                    This page is {page.level}
+                    This page is{" "}
+                    <span
+                        style={{
+                            color: CONTENT_LEVEL_COLOR_MAP[
+                                page.level as ContentLevel
+                            ],
+                            fontWeight: "bold",
+                        }}
+                    >
+                        {page.level}
+                    </span>
                 </span>
                 <Button
                     className="content-filter-show"

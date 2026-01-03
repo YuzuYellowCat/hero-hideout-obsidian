@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "./index.css";
 import { DialogContext } from "contexts/dialogContext";
 
-const DialogWapper: React.FC<React.PropsWithChildren> = ({ children }) => {
+const DialogUnderlay: React.FC<React.PropsWithChildren> = ({ children }) => {
     useEffect(() => {
         const stopScroll = (e: Event) => {
             // Todo -- stop da scrolling
@@ -24,4 +24,4 @@ const DialogWapper: React.FC<React.PropsWithChildren> = ({ children }) => {
     );
 };
 
-export default DialogWapper;
+export default DialogUnderlay;

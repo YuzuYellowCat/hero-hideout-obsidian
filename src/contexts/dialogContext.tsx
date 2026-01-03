@@ -1,5 +1,5 @@
 "use client";
-import DialogWrapper from "components/DialogWrapper";
+import DialogUnderlay from "components/DialogUnderlay";
 import React, { createContext, useMemo, useState } from "react";
 
 type DialogContextType = {
@@ -39,7 +39,7 @@ export const DialogProvider: React.FC<React.PropsWithChildren> = ({
         if (!dialogContents) {
             return <></>;
         }
-        return <DialogWrapper>{dialogContents}</DialogWrapper>;
+        return <DialogUnderlay>{dialogContents}</DialogUnderlay>;
     }, [dialogContents]);
     return (
         <DialogContext.Provider value={dialogInterface}>

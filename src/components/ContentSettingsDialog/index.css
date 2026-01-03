@@ -1,0 +1,23 @@
+.content-settings {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    margin: 32px 0px;
+}
+
+.content-setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.content-setting-row label {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
