@@ -22,8 +22,8 @@ const ContentFilterWrapper: React.FC<
     const { getVisibilitySetting, setVisibilityOverride } =
         useContext(ContentLevelContext);
 
-    // Don't do anything if the setting for the current level isn't "WARN"
-    if (getVisibilitySetting(page) !== ContentSetting.WARN || !loaded) {
+    // Don't do anything if the setting for the current level is "SHOW"
+    if (getVisibilitySetting(page) === ContentSetting.SHOW || !loaded) {
         return <>{children}</>;
     }
 
