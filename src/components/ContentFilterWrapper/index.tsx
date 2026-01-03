@@ -13,11 +13,12 @@ type ContentFilterWrapperProps = {
     page: PageWithPath<MarkdownPageProperties>;
     size: "S" | "M";
     loaded?: boolean;
+    preventClick?: boolean;
 };
 
 const ContentFilterWrapper: React.FC<
     React.PropsWithChildren<ContentFilterWrapperProps>
-> = ({ children, page, size, loaded = true }) => {
+> = ({ children, page, size, loaded = true, preventClick = false }) => {
     const { getVisibilitySetting, setVisibilityOverride } =
         useContext(ContentLevelContext);
 
@@ -53,7 +54,14 @@ const ContentFilterWrapper: React.FC<
                     Show
                 </Button>
             </div>
-            <div className="content-filter-children">{children}</div>
+            <div
+                className="content-filter-children"
+                style={{
+                    pointerEvents: preventClick ? "none" : "inherit",
+                }}
+            >
+                {children}
+            </div>
         </div>
     );
 };

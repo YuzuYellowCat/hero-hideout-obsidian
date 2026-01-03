@@ -70,20 +70,12 @@ export const ContentLevelProvider: React.FC<
             const localStorageValue = localStorage.getItem(
                 _getLocalStorageKey(level)
             );
-            console.log(
-                localStorageValue,
-                _getLocalStorageKey(level),
-                Object.values(ContentSetting).some(
-                    (setting) => setting.toString() === localStorageValue
-                )
-            );
             if (
                 localStorageValue &&
                 Object.values(ContentSetting).some(
                     (setting) => setting.toString() === localStorageValue
                 )
             ) {
-                console.log("gets here");
                 setContentLevel((old) => ({
                     ...old,
                     [level]: localStorageValue,
@@ -116,7 +108,6 @@ export const ContentLevelProvider: React.FC<
                 return contentLevel[level];
             },
             updateSetting: (level: ContentLevel, value: ContentSetting) => {
-                console.log(localStorage, _getLocalStorageKey(level));
                 localStorage.setItem(_getLocalStorageKey(level), value);
                 setContentLevel((old) => ({
                     ...old,

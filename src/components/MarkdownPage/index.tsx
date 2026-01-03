@@ -24,7 +24,7 @@ const MarkdownPage: React.FC<{
     return (
         <PageWrapper color={definedPage.color} title={definedPage.title}>
             <div className="markdown-page">
-                <ContentFilterWrapper page={definedPage} size="M">
+                <ContentFilterWrapper page={definedPage} size="M" preventClick>
                     <ReactMarkdown
                         components={{
                             img: MarkdownImage,

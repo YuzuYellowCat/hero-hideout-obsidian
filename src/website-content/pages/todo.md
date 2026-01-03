@@ -19,8 +19,8 @@ ___
 * [x] Add tags
 * [x] Add "search by tag" option from the url
 * [ ] Add tag ui
-* [ ] content visibility settings
-* [ ] prevent click on blurred hidden img
+* [x] content visibility settings
+* [x] prevent click on blurred hidden img
 * [x] optional -- set up rerouting to the standard page from ref page
 * [ ] Cron job for bluesky posting (github actions?)
 * [x] Add embed previews for images on the page
