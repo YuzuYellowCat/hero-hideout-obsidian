@@ -62,7 +62,7 @@ export const ContentLevelProvider: React.FC<
                 return (
                     pageViewOverrides.get(pageOverride?.path ?? page.path) ??
                     contentLevel[
-                        (pageOverride?.path ?? page.level) as ContentLevel
+                        (pageOverride?.level ?? page.level) as ContentLevel
                     ]
                 );
             },
